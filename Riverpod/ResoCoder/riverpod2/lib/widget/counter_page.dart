@@ -9,6 +9,34 @@ class CounterPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final int counter = ref.watch(counterProvider);
 
+    ref.listen(
+      counterProvider,
+      (previous, next) {
+        if (next > 3) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Title'),
+              content: Text('Counter is: $next'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    ref.invalidate(counterProvider);
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Reset'),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('Ok'),
+                ),
+              ],
+            ),
+          );
+        }
+      },
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counter'),
