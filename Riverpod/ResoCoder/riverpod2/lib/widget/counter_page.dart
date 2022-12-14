@@ -7,7 +7,7 @@ class CounterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<int> counter = ref.watch(counterProvider);
+    final AsyncValue<int> counter = ref.watch(counterProvider(100));
 
     // ref.listen(
     //   counterProvider,
@@ -50,13 +50,18 @@ class CounterPage extends ConsumerWidget {
         ],
       ),
       body: Center(
-        child: Text(
-          counter.when(
-            data: (data) => data.toString(),
-            error: (e, _) => e.toString(),
-            loading: () => 'Loading...',
-          ),
-          style: Theme.of(context).textTheme.displayMedium,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              counter.when(
+                data: (data) => data.toString(),
+                error: (e, _) => e.toString(),
+                loading: () => 'Loading...',
+              ),
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+          ],
         ),
       ),
       // floatingActionButton: FloatingActionButton(

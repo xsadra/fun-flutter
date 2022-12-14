@@ -1,13 +1,13 @@
 abstract class WebSocketClient {
-  Stream<int> getCounterStream();
+  Stream<int> getCounterStream([int start]);
 }
 
 class FakeWSClient implements WebSocketClient {
   @override
-  Stream<int> getCounterStream() async* {
-    int counter = 0;
+  Stream<int> getCounterStream([int start = 0]) async* {
+    int counter = start;
     while (true) {
-      await Future.delayed(const Duration(milliseconds: 100));
+      await Future.delayed(const Duration(milliseconds: 1000));
       yield counter++;
     }
   }

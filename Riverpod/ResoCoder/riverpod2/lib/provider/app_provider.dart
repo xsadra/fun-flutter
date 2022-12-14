@@ -5,7 +5,7 @@ final wsClientProvider = Provider<WebSocketClient>(
   (ref) => FakeWSClient(),
 );
 
-final counterProvider = StreamProvider<int>((ref) {
+final counterProvider = StreamProvider.family<int, int>((ref, start) {
   final wsClient = ref.watch(wsClientProvider);
-  return wsClient.getCounterStream();
+  return wsClient.getCounterStream(start);
 });
