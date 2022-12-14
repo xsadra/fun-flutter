@@ -7,35 +7,35 @@ class CounterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final int counter = ref.watch(counterProvider);
+    final AsyncValue<int> counter = ref.watch(counterProvider);
 
-    ref.listen(
-      counterProvider,
-      (previous, next) {
-        if (next > 3) {
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: const Text('Title'),
-              content: Text('Counter is: $next'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    ref.invalidate(counterProvider);
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Reset'),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Ok'),
-                ),
-              ],
-            ),
-          );
-        }
-      },
-    );
+    // ref.listen(
+    //   counterProvider,
+    //   (previous, next) {
+    //     if (next > 3) {
+    //       showDialog(
+    //         context: context,
+    //         builder: (context) => AlertDialog(
+    //           title: const Text('Title'),
+    //           content: Text('Counter is: $next'),
+    //           actions: [
+    //             TextButton(
+    //               onPressed: () {
+    //                 ref.invalidate(counterProvider);
+    //                 Navigator.of(context).pop();
+    //               },
+    //               child: const Text('Reset'),
+    //             ),
+    //             TextButton(
+    //               onPressed: () => Navigator.of(context).pop(),
+    //               child: const Text('Ok'),
+    //             ),
+    //           ],
+    //         ),
+    //       );
+    //     }
+    //   },
+    // );
 
     return Scaffold(
       appBar: AppBar(
@@ -51,16 +51,20 @@ class CounterPage extends ConsumerWidget {
       ),
       body: Center(
         child: Text(
-          counter.toString(),
+          counter.when(
+            data: (data) => data.toString(),
+            error: (e, _) => e.toString(),
+            loading: () => 'Loading...',
+          ),
           style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ref.read(counterProvider.notifier).state++;
-        },
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     ref.read(counterProvider.notifier).state++;
+      //   },
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }
