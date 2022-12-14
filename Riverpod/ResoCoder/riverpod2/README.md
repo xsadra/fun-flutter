@@ -2,15 +2,14 @@
 
 Riverpod 2.0 – Complete Guide (Flutter Tutorial)
 
-## Getting Started
+## What used?
+- .autoDispose
+- .invalidate
+- .listen
+- .family
+- StreamProvider
+- StateProvider
 
-This project is a starting point for a Flutter application.
+[Link to the tutorial](https://resocoder.com/2022/04/22/riverpod-2-0-complete-guide-flutter-tutorial)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+note: [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
