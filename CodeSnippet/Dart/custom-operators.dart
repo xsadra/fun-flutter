@@ -41,6 +41,12 @@ void main(List<String> args) {
   final sonWithCat = son & cat;
   final withSonAndCat = withDaughter ^ sonWithCat;
   print('$withSonAndCat');
+
+// Part 08 - Operators on Class Definitions
+  final meThisYear = Person2(age: 28);
+  print('Me this year is = $meThisYear');
+  final meNextYear = meThisYear + 1;
+  print('Me next year is = $meNextYear');
 }
 
 // Part 01 - Add to Same class together
@@ -213,3 +219,20 @@ extension on Family2 {
       );
 }
 // Part 07 - END
+
+// Part 08 - Operators on Class Definitions
+class Person2 {
+  final int age;
+
+  Person2({
+    required this.age,
+  });
+
+  Person2 operator +(int age) => Person2(
+        age: this.age + age,
+      );
+
+  @override
+  String toString() => 'Person (age = $age)';
+}
+// Part 08 - END
