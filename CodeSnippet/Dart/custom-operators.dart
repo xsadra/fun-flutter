@@ -22,6 +22,11 @@ void main(List<String> args) {
 
   // Part 05 - Subtracting an Iterable from Another Iterable
   print([10, 12, 33, 45, 0] - [12, 0]);
+
+  // Part 06 - Custom Operators on Map
+  print({'name': 'Sadra', 'age': 28} + {'address': '321 Main St'});
+  print({'name': 'Sadra', 'age': 28} - {'age': 28});
+  print({'name': 'Sadra', 'age': 28} * 3);
 }
 
 // Part 01 - Add to Same class together
@@ -100,3 +105,24 @@ extension RemoveList<T> on Iterable<T> {
       where((element) => !other.contains(element));
 }
 // Part 05 - END
+
+// Part 06 - Custom Operators on Map
+extension MapOperations<K, V> on Map<K, V> {
+  Map<K, V> operator +(Map<K, V> other) => {
+        ...this,
+        ...other,
+      };
+
+  Map<K, V> operator -(Map<K, V> other) {
+    return {...this}..removeWhere((key, value) {
+        return other.containsKey(key) && other[key] == value;
+      });
+  }
+
+  Iterable<Map<K, V>> operator *(int times) sync* {
+    for (var i = 0; i < times; i++) {
+      yield this;
+    }
+  }
+}
+// Part 06 - END
