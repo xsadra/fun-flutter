@@ -1,7 +1,7 @@
 ## List of tutorials (Checked):
 - [Riverpod 2.0 – Complete Guide](https://www.youtube.com/watch?v=Zp7VKVhirmw) - [Youtube]
 - [Riverpod documentation (Official)](https://riverpod.dev/docs/getting_started)
-
+- [Custom Operators in Dart](https://youtu.be/HvZZqfK1hhQ) - [Youtube]
 
 
 
@@ -9,8 +9,8 @@
 ## List of all tutorials:
 
 - [Riverpod 2.0 – Complete Guide](https://www.youtube.com/watch?v=Zp7VKVhirmw) - [Youtube] - ✅
-- [Riverpod documentation (Official)](https://riverpod.dev/docs/getting_started) ✅
-- [Custom Operators in Dart](https://youtu.be/HvZZqfK1hhQ) - [Youtube]
+- [Riverpod documentation (Official)](https://riverpod.dev/docs/getting_started) - ✅
+- [Custom Operators in Dart](https://youtu.be/HvZZqfK1hhQ) - [Youtube] - ✅
 
 
 
