@@ -16,6 +16,9 @@ void main(List<String> args) {
   print(add(1, null));
   print(add(null, 10));
   print(add(1, 10));
+
+  // Part 04 - Subtracting a String from Another String
+  print('Foo Bar' - 'Foo');
 }
 
 // Part 01 - Add to Same class together
@@ -78,3 +81,12 @@ extension NullableAdd<T extends num> on T? {
   }
 }
 // Part 03 - END
+
+// Part 04 - Subtracting a String from Another String
+extension Remove on String {
+  String operator -(String other) => replaceAll(
+        other,
+        '',
+      );
+}
+// Part 04 - END
