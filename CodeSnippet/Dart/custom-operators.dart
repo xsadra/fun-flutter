@@ -19,6 +19,9 @@ void main(List<String> args) {
 
   // Part 04 - Subtracting a String from Another String
   print('Foo Bar' - 'Foo');
+
+  // Part 05 - Subtracting an Iterable from Another Iterable
+  print([10, 12, 33, 45, 0] - [12, 0]);
 }
 
 // Part 01 - Add to Same class together
@@ -90,3 +93,10 @@ extension Remove on String {
       );
 }
 // Part 04 - END
+
+// Part 05 - Subtracting an Iterable from Another Iterable
+extension RemoveList<T> on Iterable<T> {
+  Iterable<T> operator -(Iterable<T> other) =>
+      where((element) => !other.contains(element));
+}
+// Part 05 - END
