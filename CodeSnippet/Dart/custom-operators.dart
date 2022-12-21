@@ -27,6 +27,20 @@ void main(List<String> args) {
   print({'name': 'Sadra', 'age': 28} + {'address': '321 Main St'});
   print({'name': 'Sadra', 'age': 28} - {'age': 28});
   print({'name': 'Sadra', 'age': 28} * 3);
+
+  // Part 07 - Cross Data Type Operators
+  final me2 = Person(name: 'Sadra');
+  final you2 = Person(name: 'Sara');
+  final son = Person(name: 'nik');
+  final daughter = Person(name: 'jeny');
+  final cat = Pet(name: 'Catty');
+  final us = me2 + you2;
+  final usWithCat = us & cat;
+  final withSon = usWithCat + son;
+  final withDaughter = withSon + daughter;
+  final sonWithCat = son & cat;
+  final withSonAndCat = withDaughter ^ sonWithCat;
+  print('$withSonAndCat');
 }
 
 // Part 01 - Add to Same class together
@@ -126,3 +140,76 @@ extension MapOperations<K, V> on Map<K, V> {
   }
 }
 // Part 06 - END
+
+// Part 07 - Cross Data Type Operators
+class Person {
+  final String name;
+  const Person({
+    required this.name,
+  });
+  @override
+  String toString() => 'Person (name = $name)';
+}
+
+class Pet {
+  final String name;
+  const Pet({
+    required this.name,
+  });
+  @override
+  String toString() => 'Pet (name = $name)';
+}
+
+class Family2 {
+  final List<Person> members;
+  final List<Pet> pets;
+
+  const Family2({
+    required this.members,
+    required this.pets,
+  });
+
+  @override
+  String toString() => 'Family (members = $members, pets = $pets)';
+}
+
+extension on Person {
+  Family2 operator +(Person other) => Family2(
+        members: [this, other],
+        pets: [],
+      );
+  Family2 operator &(Pet other) => Family2(
+        members: [this],
+        pets: [other],
+      );
+}
+
+extension on Family2 {
+  Family2 operator &(Pet other) => Family2(
+        members: members,
+        pets: [
+          ...pets,
+          other,
+        ],
+      );
+
+  Family2 operator +(Person other) => Family2(
+        members: [
+          ...members,
+          other,
+        ],
+        pets: pets,
+      );
+
+  Family2 operator ^(Family2 other) => Family2(
+        members: [
+          ...members,
+          ...other.members,
+        ],
+        pets: [
+          ...pets,
+          ...other.pets,
+        ],
+      );
+}
+// Part 07 - END
