@@ -10,6 +10,12 @@ void main(List<String> args) {
   const numbers = ['one', 'two', 'three'];
   final result = numbers * 3;
   print(result);
+
+  // Part 03 - Addition of Two Optional Integers
+  print(add(null, null));
+  print(add(1, null));
+  print(add(null, 10));
+  print(add(1, 10));
 }
 
 // Part 01 - Add to Same class together
@@ -51,3 +57,24 @@ extension Times<T> on Iterable<T> {
   }
 }
 // Part 02 - END
+
+// Part 03 - Addition of Two Optional Integers
+int add([int? a, int? b]) {
+  return a + b;
+}
+
+extension NullableAdd<T extends num> on T? {
+  T operator +(T? other) {
+    final thisShadow = this;
+    if (this != null && other == null) {
+      return this as T;
+    } else if (this == null && other != null) {
+      return other;
+    } else if (thisShadow != null && other != null) {
+      return thisShadow + other as T;
+    } else {
+      return 0 as T;
+    }
+  }
+}
+// Part 03 - END
