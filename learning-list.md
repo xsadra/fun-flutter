@@ -11,8 +11,7 @@
 - [Riverpod documentation (Official)](https://riverpod.dev/docs/getting_started) - ✅
 - [Custom Operators in Dart](https://youtu.be/HvZZqfK1hhQ) - [Youtube] - ✅
 - [Extensions](https://www.youtube.com/watch?v=XEcnTXxUiNw) - [Youtube]
-
-
+- [Generics in Dart](https://www.youtube.com/watch?v=hjwFh_UOVu0) - [Youtube]
 
 
 
