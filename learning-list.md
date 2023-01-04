@@ -3,7 +3,7 @@
 - [Riverpod documentation (Official)](https://riverpod.dev/docs/getting_started)
 - [Custom Operators in Dart](https://youtu.be/HvZZqfK1hhQ) - [Youtube]
 - [Master State Management in Flutter](https://www.educative.io/courses/master-state-management-flutter) - [[Certificate 📜](https://www.educative.io/verify-certificate/585DM2twO1w9BOg4ocNDWjrXEm1YFq)]
-
+- [Flutter State Management](https://www.mindluster.com/certificate/5292) - [[Certificate 📜](https://www.mindluster.com/student/certificate/1130393565)]
 
 
 <!-- <h2 align="Center"  width="55%"> </h3> -->
@@ -16,7 +16,7 @@
 - [Generics in Dart](https://www.youtube.com/watch?v=hjwFh_UOVu0) - [Youtube]
 - [Exceptions and Errors](https://www.youtube.com/watch?v=2uyMvzTr9xI) - [Youtube]
 - [Master State Management in Flutter](https://www.educative.io/courses/master-state-management-flutter) - [Certificate] - ✅
-
+- [Flutter State Management](https://www.mindluster.com/certificate/5292) - [Certificate] - ✅
 
 
 <!--
