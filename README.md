@@ -11,6 +11,7 @@
 ## List of Code Snippets:
 - Dart
   1. [Custom Operators](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/custom-operators.dart)
+  2. [Extensions](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/extensions.dart)
 
 - Riverpod
   1. [Sort Product](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Riverpod/sort-product.dart)
