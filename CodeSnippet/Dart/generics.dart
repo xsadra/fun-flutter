@@ -11,6 +11,21 @@ void main(List<String> args) {
   print(doTypesMatch(1, 2.2));
 
 // Part 03 - Constrained Generic Type Definitions
+  const momAndDad = {
+    'mom': Person(),
+    'dad': Person(),
+  };
+  const brotherAndSisterAndMyFish = {
+    'Brother': Person(),
+    'Sister': Person(),
+    'Fishy': Fish(),
+  };
+
+  final allValues = [
+    momAndDad,
+    brotherAndSisterAndMyFish,
+  ];
+  describe(allValues);
 
 // Part 04 - Unconstrained Generic Type Definitions
 
@@ -53,7 +68,36 @@ bool doTypesMatch<L, R>(L a, R b) => L == R;
 // Part 02 - END
 
 // Part 03 - Constrained Generic Type Definitions
+typedef BreathingThings<T extends CanBreathe> = Map<String, T>;
 
+void describe(Iterable<BreathingThings> values) {
+  for (final map in values) {
+    for (final keyAndValue in map.entries) {
+      print('Will call breathe() on ${keyAndValue.key}');
+      keyAndValue.value.breathe();
+    }
+  }
+}
+
+mixin CanBreathe {
+  void breathe();
+}
+
+class Person with CanBreathe {
+  const Person();
+  @override
+  void breathe() {
+    print('Person is breathing...');
+  }
+}
+
+class Fish with CanBreathe {
+  const Fish();
+  @override
+  void breathe() {
+    print('Fish is breathing...');
+  }
+}
 // Part 03 - END
 
 // Part 04 - Unconstrained Generic Type Definitions
