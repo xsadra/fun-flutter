@@ -7,6 +7,8 @@ void main(List<String> args) {
   print(intValue);
 
 // Part 02 - Type Matching
+  print(doTypesMatch(1, 2));
+  print(doTypesMatch(1, 2.2));
 
 // Part 03 - Constrained Generic Type Definitions
 
@@ -43,7 +45,11 @@ T eitherIntOrDouble<T extends num>() {
 // Part 01 - END
 
 // Part 02 - Type Matching
+// bool doTypesMatch(Object a, Object b) {
+//   return a.runtimeType == b.runtimeType;
+// }
 
+bool doTypesMatch<L, R>(L a, R b) => L == R;
 // Part 02 - END
 
 // Part 03 - Constrained Generic Type Definitions
