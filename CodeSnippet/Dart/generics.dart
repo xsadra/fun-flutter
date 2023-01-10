@@ -41,6 +41,10 @@ void main(List<String> args) {
   print(json);
 
 // Part 06 - Generic Mixins and Specialized Mixin Type Definitions
+  const person = Person2(height: 1.7);
+  const dog = Dog2(height: 1);
+  print(person.height);
+  print(dog.height);
 
 // Part 07 - Generic Classes with Generic Extensions
 
@@ -118,7 +122,25 @@ typedef JSON<T> = Map<String, T>;
 // Part 05 - END
 
 // Part 06 - Generic Mixins and Specialized Mixin Type Definitions
+mixin HasHeight<H extends num> {
+  H get height;
+}
 
+typedef HasIntHeight = HasHeight<int>;
+typedef HasDoubleHeight = HasHeight<double>;
+
+class Person2 with HasDoubleHeight {
+  @override
+  final double height;
+  const Person2({required this.height});
+}
+
+class Dog2 with HasIntHeight {
+  @override
+  final int height;
+
+  const Dog2({required this.height});
+}
 // Part 06 - END
 
 // Part 07 - Generic Classes with Generic Extensions
