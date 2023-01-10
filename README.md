@@ -4,15 +4,15 @@
 ## List of tutorials:
 - [Riverpod 2.0 – Complete Guide (Flutter Tutorial)](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/ResoCoder/riverpod2)
 
-
-
-
 <br><br>
 ## List of Code Snippets:
 - Dart
   1. [Custom Operators](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/custom-operators.dart)
   2. [Extensions](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/extensions.dart)
   3. [Generics](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/generics.dart)
+  4. [Exceptions and Errors](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/exceptions.dart)
+  
+  
 
 - Riverpod
   1. [Sort Product](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Riverpod/sort-product.dart)

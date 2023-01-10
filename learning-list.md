@@ -6,6 +6,8 @@
 - [Flutter State Management](https://www.mindluster.com/certificate/5292) - [[Certificate 📜](https://www.mindluster.com/student/certificate/1130393565)]
 - [Extensions](https://www.youtube.com/watch?v=XEcnTXxUiNw) - [Youtube]
 - [Generics in Dart](https://www.youtube.com/watch?v=hjwFh_UOVu0) - [Youtube]
+- [Exceptions and Errors](https://www.youtube.com/watch?v=2uyMvzTr9xI) - [Youtube]
+
 
 
 <!-- <h2 align="Center"  width="55%"> </h3> -->
