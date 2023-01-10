@@ -28,6 +28,10 @@ void main(List<String> args) {
   describe(allValues);
 
 // Part 04 - Unconstrained Generic Type Definitions
+  const one = KeyValue(1, 2);
+  print(one);
+  const two = KeyValue(1, 2.2); // MapEntry<int, double>
+  print(two);
 
 // Part 05 - Specializing Generic Type Definitions
 
@@ -101,6 +105,7 @@ class Fish with CanBreathe {
 // Part 03 - END
 
 // Part 04 - Unconstrained Generic Type Definitions
+typedef KeyValue<K, V> = MapEntry<K, V>;
 
 // Part 04 - END
 
