@@ -34,6 +34,11 @@ void main(List<String> args) {
   print(two);
 
 // Part 05 - Specializing Generic Type Definitions
+  const JSON<String> json = {
+    'name': 'John',
+    'address': '123 Main St',
+  };
+  print(json);
 
 // Part 06 - Generic Mixins and Specialized Mixin Type Definitions
 
@@ -106,11 +111,10 @@ class Fish with CanBreathe {
 
 // Part 04 - Unconstrained Generic Type Definitions
 typedef KeyValue<K, V> = MapEntry<K, V>;
-
 // Part 04 - END
 
 // Part 05 - Specializing Generic Type Definitions
-
+typedef JSON<T> = Map<String, T>;
 // Part 05 - END
 
 // Part 06 - Generic Mixins and Specialized Mixin Type Definitions
