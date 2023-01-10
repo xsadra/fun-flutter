@@ -6,6 +6,9 @@ void main(List<String> args) {
   tryCreatingPerson(age: 141);
 
   // Part 02 - Custom Exception Class
+  tryCreatingPerson2(age: 20);
+  tryCreatingPerson2(age: -1);
+  tryCreatingPerson2(age: 141);
 
   // Part 03 - Rethrow
 
@@ -43,8 +46,49 @@ class Person {
   }
 }
 // Part 01 - END
+
 // Part 02 - Custom Exception Class
+void tryCreatingPerson2({int age = 0}) {
+  try {
+    print(Person2(age: age).age);
+  } on InvalidAgeException catch (exception, strackTrace) {
+    print(exception);
+    print(strackTrace);
+  }
+  print('--------------------');
+}
+
+class InvalidAgeException implements Exception {
+  final int age;
+  final String message;
+
+  InvalidAgeException(this.age, this.message);
+
+  @override
+  String toString() => 'InvalidAgeException, $message, $age';
+}
+
+class Person2 {
+  final int age;
+
+  Person2({
+    required this.age,
+  }) {
+    if (age < 0) {
+      throw InvalidAgeException(
+        age,
+        'Age cannot be negative',
+      );
+    } else if (age > 140) {
+      throw InvalidAgeException(
+        age,
+        'Age cannot be greater than 140',
+      );
+    }
+  }
+}
 // Part 02 - END
+
 // Part 03 - Rethrow
 // Part 03 - END
 // Part 04 - Finally
