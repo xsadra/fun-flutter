@@ -70,6 +70,13 @@ void main(List<String> args) async {
   }
 
   // Part 07 - Capturing Stack Trace
+  Dog7(isTired: false).run();
+  try {
+    Dog7(isTired: true).run();
+  } catch (e, stackTrace) {
+    print(e);
+    print(stackTrace);
+  }
 }
 
 // Part 01 - Throwing in Class Constructors
@@ -283,4 +290,24 @@ class Person6 {
 // Part 06 - END
 
 // Part 07 - Capturing Stack Trace
+class DogIsTiredException7 implements Exception {
+  final String message;
+  DogIsTiredException7([this.message = 'Poor doggy is tired']);
+}
+
+class Dog7 {
+  final bool isTired;
+
+  const Dog7({
+    required this.isTired,
+  });
+
+  void run() {
+    if (isTired) {
+      throw DogIsTiredException7('Poor doggo is tired');
+    } else {
+      print('Doggo is running');
+    }
+  }
+}
 // Part 07 - END
