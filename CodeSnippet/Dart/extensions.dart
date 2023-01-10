@@ -145,12 +145,10 @@ class Person {
   });
 }
 
-// short description of a person
 extension ShortDescription on Person {
   String get description => '$name ($age)';
 }
 
-// long description on person
 extension LongDescription on Person {
   String get description => '$name is $age years old';
 }
