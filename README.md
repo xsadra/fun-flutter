@@ -4,9 +4,6 @@
 ## List of tutorials:
 - [Riverpod 2.0 – Complete Guide (Flutter Tutorial)](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/ResoCoder/riverpod2)
 
-
-
-
 <br><br>
 ## List of Code Snippets:
 - Dart
