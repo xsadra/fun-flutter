@@ -84,6 +84,7 @@ void main(List<String> args) {
   print(doubles.reduce(divide));
 
   // Part 12 - Generic Class Properties
+  print(Person4(age: 10.2).ageRounded);
 }
 
 // Part 01 - Generic Integer or Double
@@ -289,5 +290,13 @@ T divide<T extends num>(T lhs, T rhs) {
 // Part 11 - END
 
 // Part 12 - Generic Class Properties
+class Person4<T extends num> {
+  final T age;
 
+  const Person4({
+    required this.age,
+  });
+
+  int get ageRounded => age.round();
+}
 // Part 13 - END
