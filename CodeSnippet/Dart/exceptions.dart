@@ -52,6 +52,22 @@ void main(List<String> args) async {
   }
 
   // Part 06 - Throwing Errors
+  final person = Person6(age: 10);
+  print(person);
+  person.age = 0;
+  print(person);
+
+  try {
+    /// errors are not created to be caught, so if you get an error
+    /// make sure that you change your program in order to avoid that error
+    /// exceptions however are meant to be caught
+    person.age = -1;
+    print(person);
+  } catch (e) {
+    print(e);
+  } finally {
+    print(person);
+  }
 
   // Part 07 - Capturing Stack Trace
 }
@@ -245,6 +261,25 @@ class Dog5 extends Animal {
 // Part 05 - END
 
 // Part 06 - Throwing Errors
+class Person6 {
+  int _age;
+
+  Person6({
+    required int age,
+  }) : _age = age;
+
+  int get age => _age;
+
+  set age(int value) {
+    if (value < 0) {
+      throw ArgumentError('Age cannot be negative.');
+    }
+    _age = value;
+  }
+
+  @override
+  String toString() => 'Person(age: $age)';
+}
 // Part 06 - END
 
 // Part 07 - Capturing Stack Trace
