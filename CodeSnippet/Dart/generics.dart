@@ -1,16 +1,16 @@
 // Generics
 void main(List<String> args) {
-// Part 01 - Generic Integer or Double
+  // Part 01 - Generic Integer or Double
   final double doubleValue = eitherIntOrDouble();
   print(doubleValue);
   final int intValue = eitherIntOrDouble();
   print(intValue);
 
-// Part 02 - Type Matching
+  // Part 02 - Type Matching
   print(doTypesMatch(1, 2));
   print(doTypesMatch(1, 2.2));
 
-// Part 03 - Constrained Generic Type Definitions
+  // Part 03 - Constrained Generic Type Definitions
   const momAndDad = {
     'mom': Person(),
     'dad': Person(),
@@ -27,36 +27,40 @@ void main(List<String> args) {
   ];
   describe(allValues);
 
-// Part 04 - Unconstrained Generic Type Definitions
+  // Part 04 - Unconstrained Generic Type Definitions
   const one = KeyValue(1, 2);
   print(one);
   const two = KeyValue(1, 2.2); // MapEntry<int, double>
   print(two);
 
-// Part 05 - Specializing Generic Type Definitions
+  // Part 05 - Specializing Generic Type Definitions
   const JSON<String> json = {
     'name': 'John',
     'address': '123 Main St',
   };
   print(json);
 
-// Part 06 - Generic Mixins and Specialized Mixin Type Definitions
+  // Part 06 - Generic Mixins and Specialized Mixin Type Definitions
   const person = Person2(height: 1.7);
   const dog = Dog2(height: 1);
   print(person.height);
   print(dog.height);
 
-// Part 07 - Generic Classes with Generic Extensions
+  // Part 07 - Generic Classes with Generic Extensions
+  const tuple = Tuple(1, 20.2);
+  print(tuple);
+  final swapped = tuple.swap();
+  print(swapped);
 
-// Part 08 -  Generic Sorting with Comparable
+  // Part 08 -  Generic Sorting with Comparable
 
-// Part 09 - Handling Lack of Common Ancestors
+  // Part 09 - Handling Lack of Common Ancestors
 
-// Part 10 - Generic Extension on Any Data Type
+  // Part 10 - Generic Extension on Any Data Type
 
-// Part 11 - Generic Function Pointers
+  // Part 11 - Generic Function Pointers
 
-// Part 12 - Generic Class Properties
+  // Part 12 - Generic Class Properties
 }
 
 // Part 01 - Generic Integer or Double
@@ -144,7 +148,22 @@ class Dog2 with HasIntHeight {
 // Part 06 - END
 
 // Part 07 - Generic Classes with Generic Extensions
+class Tuple<L, R> {
+  final L left;
+  final R right;
+  const Tuple(this.left, this.right);
 
+  @override
+  String toString() => 'Tuple, left = $left, right = $right';
+}
+
+extension<L, R> on Tuple<L, R> {
+  Tuple<R, L> swap() => Tuple(right, left);
+}
+
+extension<L extends num, R extends num> on Tuple<L, R> {
+  num get sum => left + right;
+}
 // Part 07 - END
 
 // Part 08 -  Generic Sorting with Comparable
