@@ -65,6 +65,17 @@ void main(List<String> args) {
   print(['2', 3, '4.2', 5.3].toInt() == 14);
 
   // Part 10 - Generic Extension on Any Data Type
+  final personName = personThing.mapIfOfType(
+        (Person3 p) => p.name,
+      ) ??
+      'Unknown person name';
+  print(personName);
+
+  final animalName = animalThing.mapIfOfType(
+        (Animal a) => a.name,
+      ) ??
+      'Unknown animal name';
+  print(animalName);
 
   // Part 11 - Generic Function Pointers
 
@@ -218,6 +229,49 @@ extension ToInt on Object {
 
 // Part 10 - Generic Extension on Any Data Type
 
+abstract class Thing {
+  final String name;
+  const Thing({required this.name});
+}
+
+class Person3 extends Thing {
+  final int age;
+
+  const Person3({
+    required String name,
+    required this.age,
+  }) : super(name: name);
+}
+
+class Animal extends Thing {
+  final String species;
+
+  const Animal({
+    required String name,
+    required this.species,
+  }) : super(name: name);
+}
+
+const Thing personThing = Person3(
+  name: 'Foo',
+  age: 20,
+);
+
+const Thing animalThing = Animal(
+  name: 'Bar',
+  species: 'Cat',
+);
+
+extension<T> on T {
+  R? mapIfOfType<E, R>(R Function(E) f) {
+    final shadow = this;
+    if (shadow is E) {
+      return f(shadow);
+    } else {
+      return null;
+    }
+  }
+}
 // Part 10 - END
 
 // Part 11 - Generic Function Pointers
