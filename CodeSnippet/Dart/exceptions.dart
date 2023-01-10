@@ -11,6 +11,14 @@ void main(List<String> args) {
   tryCreatingPerson2(age: 141);
 
   // Part 03 - Rethrow
+  try {
+    tryCreatingPerson3(age: 20);
+    tryCreatingPerson3(age: -1);
+    tryCreatingPerson3(age: 141);
+  } catch (error, stackTrace) {
+    print(error);
+    print(stackTrace);
+  }
 
   // Part 04 - Finally
 
@@ -90,12 +98,47 @@ class Person2 {
 // Part 02 - END
 
 // Part 03 - Rethrow
+void tryCreatingPerson3({int age = 0}) {
+  try {
+    print(Person3(age: age).age);
+  } on InvalidAgeException3 {
+    rethrow;
+  }
+  print('--------------------');
+}
+
+class InvalidAgeException3 implements Exception {
+  final int age;
+  final String message;
+
+  InvalidAgeException3(this.age, this.message);
+
+  @override
+  String toString() => 'InvalidAgeException, $message. Age = $age';
+}
+
+class Person3 {
+  final int age;
+
+  Person3({required this.age}) {
+    if (age < 0) {
+      throw InvalidAgeException3(age, 'Age cannot be negative');
+    }
+    if (age > 140) {
+      throw InvalidAgeException3(age, 'Age cannot be greater than 140');
+    }
+  }
+}
 // Part 03 - END
+
 // Part 04 - Finally
 // Part 04 - END
+
 // Part 05 - Custom Throws Annotation
 // Part 05 - END
+
 // Part 06 - Throwing Errors
 // Part 06 - END
+
 // Part 07 - Capturing Stack Trace
 // Part 07 - END
