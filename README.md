@@ -2,21 +2,26 @@
 
 
 ## List of tutorials:
-- [Riverpod 2.0 – Complete Guide (Flutter Tutorial)](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/ResoCoder/riverpod2)
+- [Riverpod 2.0 – Complete Guide (Flutter Tutorial)](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/ResoCoder/riverpod2)\
+- [Riverpod 2.x Course for Flutter Developers](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x)
+  - [Example 1](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example1)
+  - [Example 2](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example2)
+  - [Example 3](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example3)
+  - [Example 4](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example4)
 
 <br><br>
 ## List of Code Snippets:
 - Dart
-  1. [Custom Operators](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/custom-operators.dart)
-  2. [Extensions](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/extensions.dart)
-  3. [Generics](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/generics.dart)
-  4. [Exceptions and Errors](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/exceptions.dart)
+  - [Custom Operators](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/custom-operators.dart)
+  - [Extensions](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/extensions.dart)
+  - [Generics](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/generics.dart)
+  - [Exceptions and Errors](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Dart/exceptions.dart)
   
   
 
 - Riverpod
-  1. [Sort Product](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Riverpod/sort-product.dart)
-  2. [pageIndexProvider - Previous Button](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Riverpod/pageIndexProvider-PreviousButton.dart)
+  - [Sort Product](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Riverpod/sort-product.dart)
+  - [pageIndexProvider - Previous Button](https://github.com/Arti-Sadra/fun-flutter/blob/main/CodeSnippet/Riverpod/pageIndexProvider-PreviousButton.dart)
 
 <br>
 <br>
