@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:picogram/state/auth/backend/authenticator.dart';
 import 'firebase_options.dart';
+
+extension Log on Object {
+  void log([String? message]) {
+    debugPrint('$runtimeType: $message - ${toString()}');
+  }
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +46,34 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('PicoGram'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () async {
+                final result = await Authenticator().signInWithGoogle();
+                result.log('Google sign in result');
+              },
+              child: const Text('Sign in with Google'),
+            ),
+            TextButton(
+              onPressed: () async {
+                final result = await Authenticator().loginWithFacebook();
+                result.log('Facebook sign in result');
+              },
+              child: const Text('Sign in with Facebook'),
+            ),
+            TextButton(
+              onPressed: () async {
+                await Authenticator().signOut();
+                log('Signed out');
+              },
+              child: const Text('Sign out'),
+            ),
+          ],
+        ),
       ),
     );
   }
