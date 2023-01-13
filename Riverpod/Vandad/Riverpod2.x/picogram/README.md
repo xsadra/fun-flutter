@@ -1,16 +1,13 @@
-# picogram
+# PicoGram
 
 Sharing Image and Video
 
-## Getting Started
+## Setup the project
+- [Setup Firebase](https://firebase.google.com/docs/flutter/setup?platform=ios)
+    - [Install the Firebase CLI](https://firebase.google.com/docs/cli#setup_update_cli)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Helps
+- [Failed to list Firebase projects](https://stackoverflow.com/questions/57941289/how-do-i-solve-error-failed-to-list-firebase-projects-see-firebase-debug-log)
+- [Change Android minSdkVersion](https://stackoverflow.com/questions/52060516/flutter-how-to-change-android-minsdkversion-in-flutter-project)
