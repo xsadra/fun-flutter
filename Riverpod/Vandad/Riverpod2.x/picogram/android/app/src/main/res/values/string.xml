@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">2797180157080442</string>
+    <string name="fb_login_protocol_scheme">fb2797180157080442</string>
+    <string name="facebook_client_token">c56c611afd1c9f3f2028359c4d2ae0f4</string>
+    <string name="app_name">PicoGram</string>
+</resources>
