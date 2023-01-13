@@ -21,12 +21,30 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def flutterCompileSdkVersion = localProperties.getProperty('flutter.compileSdkVersion').toInteger()
+if (flutterCompileSdkVersion == null) {
+    flutterCompileSdkVersion = 33
+}
+
+def flutterTargetSdkVersion = localProperties.getProperty('flutter.targetSdkVersion').toInteger()
+if (flutterCompileSdkVersion == null) {
+    flutterCompileSdkVersion = 33
+}
+
+def flutterMinSdkVersion = localProperties.getProperty('flutter.minSdkVersion').toInteger()
+if (flutterCompileSdkVersion == null) {
+    flutterCompileSdkVersion = 33
+}
+
 apply plugin: 'com.android.application'
+// START: FlutterFire Configuration
+apply plugin: 'com.google.gms.google-services'
+// END: FlutterFire Configuration
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion flutterCompileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -47,8 +65,8 @@ android {
         applicationId "at.sadra.app.picogram"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion flutterMinSdkVersion
+        targetSdkVersion flutterTargetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
