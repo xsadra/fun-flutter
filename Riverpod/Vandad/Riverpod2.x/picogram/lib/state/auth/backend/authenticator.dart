@@ -7,26 +7,25 @@ import '../constants/constants.dart';
 import '../models/auth_result.dart';
 
 class Authenticator {
-  final _auth = FirebaseAuth.instance;
-  final _googleSignIn = GoogleSignIn();
-  final _facebookAuth = FacebookAuth.instance;
+  const Authenticator();
 
-  UserId? get userId => _auth.currentUser?.uid;
+  UserId? get userId => FirebaseAuth.instance.currentUser?.uid;
 
-  bool get isSignedIn => _auth.currentUser != null;
+  bool get isSignedIn => FirebaseAuth.instance.currentUser != null;
 
-  String get displayName => _auth.currentUser?.displayName ?? '';
+  String get displayName =>
+      FirebaseAuth.instance.currentUser?.displayName ?? '';
 
-  String? get email => _auth.currentUser?.email;
+  String? get email => FirebaseAuth.instance.currentUser?.email;
 
   Future<AuthResult> loginWithFacebook() async {
     try {
-      final LoginResult result = await _facebookAuth.login();
+      final LoginResult result = await FacebookAuth.instance.login();
       if (result.status == LoginStatus.success) {
         final AccessToken accessToken = result.accessToken!;
         final AuthCredential credential =
             FacebookAuthProvider.credential(accessToken.token);
-        await _auth.signInWithCredential(credential);
+        await FirebaseAuth.instance.signInWithCredential(credential);
         return AuthResult.success;
       } else {
         return AuthResult.aborted;
@@ -37,10 +36,12 @@ class Authenticator {
       if (e.code == Constants.accountExistsWithDifferentCredential &&
           email != null &&
           credential != null) {
-        final providers = await _auth.fetchSignInMethodsForEmail(email);
+        final providers =
+            await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
         if (providers.contains(Constants.googleCom)) {
           await signInWithGoogle();
-          await _auth.currentUser?.linkWithCredential(credential);
+          await FirebaseAuth.instance.currentUser
+              ?.linkWithCredential(credential);
         }
         return AuthResult.success;
       } else {
@@ -62,7 +63,7 @@ class Authenticator {
       idToken: googleAuth.idToken,
     );
     try {
-      await _auth.signInWithCredential(credential);
+      await FirebaseAuth.instance.signInWithCredential(credential);
       return AuthResult.success;
     } on Exception catch (_) {
       return AuthResult.failure;
@@ -70,8 +71,8 @@ class Authenticator {
   }
 
   Future<void> signOut() async {
-    await _auth.signOut();
-    await _googleSignIn.signOut();
-    await _facebookAuth.logOut();
+    await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut();
+    await FacebookAuth.instance.logOut();
   }
 }
