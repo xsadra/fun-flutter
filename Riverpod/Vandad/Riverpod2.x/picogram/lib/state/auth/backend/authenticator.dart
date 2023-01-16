@@ -39,7 +39,7 @@ class Authenticator {
         final providers =
             await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
         if (providers.contains(Constants.googleCom)) {
-          await signInWithGoogle();
+          await logInWithGoogle();
           await FirebaseAuth.instance.currentUser
               ?.linkWithCredential(credential);
         }
@@ -50,7 +50,7 @@ class Authenticator {
     }
   }
 
-  Future<AuthResult> signInWithGoogle() async {
+  Future<AuthResult> logInWithGoogle() async {
     final GoogleSignIn googleSignIn =
         GoogleSignIn(scopes: [Constants.emailScope]);
     final signInAccount = await googleSignIn.signIn();

@@ -53,7 +53,7 @@ class HomePage extends ConsumerWidget {
           children: [
             TextButton(
               onPressed: () async {
-                final result = await Authenticator().signInWithGoogle();
+                final result = await Authenticator().logInWithGoogle();
                 result.log('Google sign in result');
               },
               child: const Text('Sign in with Google'),
