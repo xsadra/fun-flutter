@@ -32,8 +32,8 @@ Note: Don't forget to add the SHA-1 key for the debug and release mode.
 ----
 
 
-<details><summary>Cloud Firestore Security Rules</summary>
-<p>
+<details><summary>Setup the Cloud Firestore Security Rules</summary>
+
 ```js
 rules_version = '2';
 service cloud.firestore {
@@ -46,7 +46,7 @@ service cloud.firestore {
   }
 }
 ```
-</p>
+
 </details>
 
 
