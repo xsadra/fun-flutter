@@ -29,6 +29,28 @@ In order to do that you need to download the latest configuration file for both 
 
 Note: Don't forget to add the SHA-1 key for the debug and release mode.
 
+----
+
+
+<details><summary>Cloud Firestore Security Rules</summary>
+<p>
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{collectionName}/{document=**} {
+      allow read, update: if request.auth != null;
+      allow create: if request.auth != null;
+      allow delete: if request.auth != null && ((collectionName == 'likes' || collectionName == 'comments') || request.auth.uid == resource.data.uid);
+    }
+  }
+}
+```
+</p>
+</details>
+
+
+
 ## Helps
 - [Failed to list Firebase projects](https://stackoverflow.com/questions/57941289/how-do-i-solve-error-failed-to-list-firebase-projects-see-firebase-debug-log)
 - [Change Android minSdkVersion](https://stackoverflow.com/questions/52060516/flutter-how-to-change-android-minsdkversion-in-flutter-project)
