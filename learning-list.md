@@ -16,9 +16,9 @@
 - [Riverpod 2.0 – Complete Guide](https://www.youtube.com/watch?v=Zp7VKVhirmw) - [Youtube] - ✅
 - [Riverpod documentation (Official)](https://riverpod.dev/docs/getting_started) - ✅
 - [Custom Operators in Dart](https://youtu.be/HvZZqfK1hhQ) - [Youtube] - ✅
-- [Extensions](https://www.youtube.com/watch?v=XEcnTXxUiNw) - [Youtube]
-- [Generics in Dart](https://www.youtube.com/watch?v=hjwFh_UOVu0) - [Youtube]
-- [Exceptions and Errors](https://www.youtube.com/watch?v=2uyMvzTr9xI) - [Youtube]
+- [Extensions](https://www.youtube.com/watch?v=XEcnTXxUiNw) - [Youtube] - ✅
+- [Generics in Dart](https://www.youtube.com/watch?v=hjwFh_UOVu0) - [Youtube] - ✅
+- [Exceptions and Errors](https://www.youtube.com/watch?v=2uyMvzTr9xI) - [Youtube] - ✅
 - [Master State Management in Flutter](https://www.educative.io/courses/master-state-management-flutter) - [Certificate] - ✅
 - [Flutter State Management](https://www.mindluster.com/certificate/5292) - [Certificate] - ✅
 
