@@ -21,6 +21,7 @@
 - [Exceptions and Errors](https://www.youtube.com/watch?v=2uyMvzTr9xI) - [Youtube] - ✅
 - [Master State Management in Flutter](https://www.educative.io/courses/master-state-management-flutter) - [Certificate] - ✅
 - [Flutter State Management](https://www.mindluster.com/certificate/5292) - [Certificate] - ✅
+- [Riverpod 2.x Course for Flutter Developers](https://www.youtube.com/watch?v=vtGCteFYs4M) - [Youtube]
 
 
 <!--
