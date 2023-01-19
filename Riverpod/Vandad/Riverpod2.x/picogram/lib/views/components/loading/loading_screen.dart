@@ -44,43 +44,39 @@ class LoadingScreen {
     final renderBox = context.findRenderObject() as RenderBox;
     final size = renderBox.size;
     final overlay = OverlayEntry(
-      builder: (context) => Positioned(
-        top: size.height / 2,
-        left: size.width / 2,
-        child: Material(
-          color: Colors.black.withOpacity(0.5),
+      builder: (context) => Material(
+        color: Colors.black.withOpacity(0.5),
+        child: Center(
           child: Container(
             constraints: BoxConstraints(
               maxWidth: size.width * 0.8,
               maxHeight: size.height * 0.8,
-              minWidth: size.width * 0.5,
+              minWidth: size.width * 0.3,
             ),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(height: 10),
-                      const CircularProgressIndicator(),
-                      const SizedBox(height: 10),
-                      StreamBuilder<String>(
-                        stream: textController.stream,
-                        builder: (context, snapshot) => Text(
-                          snapshot.data ?? '',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(color: Colors.black),
-                        ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 10),
+                    const CircularProgressIndicator(),
+                    const SizedBox(height: 16),
+                    StreamBuilder<String>(
+                      stream: textController.stream,
+                      builder: (context, snapshot) => Text(
+                        snapshot.data ?? '',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
