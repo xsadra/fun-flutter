@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart'
     show Colors, TextDecoration, TextStyle, VoidCallback, immutable;
-import 'package:picogram/views/rich_text/link_text.dart';
+
+import 'link_text.dart';
+
 
 @immutable
 class BaseText {
