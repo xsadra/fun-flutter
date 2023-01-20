@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:picogram/views/components/loading/loading_screen.dart';
 import 'firebase_options.dart';
-import 'state/auth/backend/authenticator.dart';
-import 'state/auth/providers/auth_state_provider.dart';
-import 'state/auth/providers/is_logged_in_provider.dart';
+import 'state/auth/providers/providers.dart';
+import 'views/login/login.dart';
 
 extension Log on Object {
   void log([String? message]) {
@@ -35,6 +35,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Consumer(
         builder: (BuildContext context, WidgetRef ref, Widget? child) {
+
+          ref.listen<bool>(isLoadingProvider, (_, isLoading) {
+            if (isLoading) {
+             LoadingScreen.instance().show(context: context);
+            } else {
+              LoadingScreen.instance().hide();
+            }
+          });
+
           final isLoggedIn = ref.watch(isLoggedInProvider);
           return isLoggedIn ? const MainView() : const LoginView();
         },
@@ -48,8 +57,12 @@ class MainView extends ConsumerWidget {
     Key? key,
   }) : super(key: key);
 
+
+
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('PicoGram'),
@@ -63,42 +76,6 @@ class MainView extends ConsumerWidget {
         ],
       ),
       body: const Center(),
-    );
-  }
-}
-
-class LoginView extends ConsumerWidget {
-  const LoginView({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(authStateProvider).result?.log('authStateProvider');
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
-            child: const Text('Sign in with Google'),
-          ),
-          TextButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithFacebook,
-            child: const Text('Sign in with Facebook'),
-          ),
-          TextButton(
-            onPressed: () async {
-              await const Authenticator().signOut();
-              log('Signed out');
-            },
-            child: const Text('Sign out'),
-          ),
-        ],
-      ),
     );
   }
 }
