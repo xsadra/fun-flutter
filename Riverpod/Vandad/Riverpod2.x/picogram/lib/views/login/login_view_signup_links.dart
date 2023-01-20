@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:picogram/views/components/rich_text/rich_text_widget.dart';
-import 'package:picogram/views/contsnts/strings.dart';
+import 'package:picogram/views/constants/strings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../components/rich_text/base_text.dart';
