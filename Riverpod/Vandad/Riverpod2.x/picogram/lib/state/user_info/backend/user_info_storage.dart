@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart' show immutable;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../constants/firebase_collection_name.dart';
-import '../../constants/firebase_field_name.dart';
+import '../../constants/firebase_fields_name.dart';
 import '../models/user_info_payload.dart';
 
 @immutable
@@ -17,14 +17,14 @@ class UserInfoStorage {
     try {
       final userInfo = await FirebaseFirestore.instance
           .collection(FirebaseCollectionName.users)
-          .where(FirebaseFieldName.userId, isEqualTo: userId)
+          .where(FirebaseFieldsName.userId, isEqualTo: userId)
           .limit(1)
           .get();
 
       if (userInfo.docs.isNotEmpty) {
         await userInfo.docs.first.reference.update({
-          FirebaseFieldName.displayName: displayName ?? '',
-          FirebaseFieldName.email: email ?? '',
+          FirebaseFieldsName.displayName: displayName ?? '',
+          FirebaseFieldsName.email: email ?? '',
         });
         return true;
       }

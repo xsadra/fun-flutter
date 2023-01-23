@@ -9,26 +9,26 @@ import '../posts.dart';
 class Post {
   Post({
     required this.postId,
-    required Map<String, dynamic> json,
-  })  : userId = json[PostKey.userId] as String,
-        message = json[PostKey.message] as String,
-        createdAt = (json[PostKey.createdAt] as Timestamp).toDate(),
-        thumbnailUrl = json[PostKey.thumbnailUrl] as String,
-        fileUrl = json[PostKey.fileUrl] as String,
+    required Map<String, dynamic> data,
+  })  : userId = data[PostKey.userId] as String,
+        message = data[PostKey.message] as String,
+        createdAt = (data[PostKey.createdAt] as Timestamp).toDate(),
+        thumbnailUrl = data[PostKey.thumbnailUrl] as String,
+        fileUrl = data[PostKey.fileUrl] as String,
         fileType = FileType.values.firstWhere(
-          (e) => e.name == json[PostKey.fileType],
+          (e) => e.name == data[PostKey.fileType],
           orElse: () => FileType.image,
         ),
-        fileName = json[PostKey.fileName] as String,
-        aspectRatio = json[PostKey.aspectRatio] as double,
+        fileName = data[PostKey.fileName] as String,
+        aspectRatio = data[PostKey.aspectRatio] as double,
         postSettings = {
-          for (final e in json[PostKey.postSettings].entries)
+          for (final e in data[PostKey.postSettings].entries)
             PostSetting.values.firstWhere(
               (e2) => e2.storageKey == e.key,
             ): e.value as bool,
         },
-        thumbnailStorageId = json[PostKey.thumbnailStorageId] as String,
-        originalFileStorageId = json[PostKey.originalFileStorageId] as String;
+        thumbnailStorageId = data[PostKey.thumbnailStorageId] as String,
+        originalFileStorageId = data[PostKey.originalFileStorageId] as String;
 
   final String postId;
   final String userId;

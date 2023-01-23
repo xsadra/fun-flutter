@@ -2,7 +2,7 @@ import 'dart:collection' show MapView;
 
 import 'package:flutter/foundation.dart' show immutable;
 
-import '../../constants/firebase_field_name.dart';
+import '../../constants/firebase_fields_name.dart';
 
 @immutable
 class UserInfoPayload extends MapView<String, String> {
@@ -11,8 +11,8 @@ class UserInfoPayload extends MapView<String, String> {
     required String? displayName,
     required String? email,
   }) : super({
-          FirebaseFieldName.userId: userId,
-          FirebaseFieldName.displayName: displayName ?? '',
-          FirebaseFieldName.email: email ?? '',
+          FirebaseFieldsName.userId: userId,
+          FirebaseFieldsName.displayName: displayName ?? '',
+          FirebaseFieldsName.email: email ?? '',
         });
 }
