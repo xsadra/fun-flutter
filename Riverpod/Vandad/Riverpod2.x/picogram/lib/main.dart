@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:picogram/views/components/loading/loading_screen.dart';
+
 import 'firebase_options.dart';
 import 'state/auth/providers/providers.dart';
+import 'views/components/animations/animations.dart';
+import 'views/components/components.dart';
 import 'views/login/login.dart';
 
 extension Log on Object {
@@ -35,10 +37,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Consumer(
         builder: (BuildContext context, WidgetRef ref, Widget? child) {
-
           ref.listen<bool>(isLoadingProvider, (_, isLoading) {
             if (isLoading) {
-             LoadingScreen.instance().show(context: context);
+              LoadingScreen.instance().show(context: context);
             } else {
               LoadingScreen.instance().hide();
             }
@@ -57,12 +58,8 @@ class MainView extends ConsumerWidget {
     Key? key,
   }) : super(key: key);
 
-
-
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('PicoGram'),
@@ -75,7 +72,18 @@ class MainView extends ConsumerWidget {
           ),
         ],
       ),
-      body: const Center(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            DataNotFoundAnimationView(),
+            EmptyContentsAnimationView(),
+            EmptyContentsWithTextAnimationView(text: 'text'),
+            ErrorAnimationView(),
+            SmallErrorAnimationView(),
+            LoadingAnimationView(),
+          ],
+        ),
+      ),
     );
   }
 }
