@@ -1,15 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 @immutable
-class Strings {
-  static const String allowLikesTitle = 'Allow likes';
-  static const String allowLikesDescription =
-      'Allow other users to like your posts';
-  static const String allowLikesKey = 'allow_likes';
-  static const String allowCommentsTitle = 'Allow comments';
-  static const String allowCommentsDescription =
-      'Allow other users to comment on your posts';
-  static const String allowCommentsStorageKey = 'allow_comments';
+class ComponentStrings {
   static const String comment = 'comment';
   static const String loading = 'Loading...';
   static const String person = 'person';
@@ -23,5 +15,5 @@ class Strings {
       'Are you sure that you want to log out of the app?';
   static const String cancel = 'Cancel';
 
-  const Strings._();
+  const ComponentStrings._();
 }
