@@ -1,1 +1,1 @@
-export 'strings.dart';
+export 'components_strings.dart';

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../constants/strings.dart';
+import '../constants/components_strings.dart';
 import 'loading_screen_controller.dart';
 
 class LoadingScreen {
@@ -16,7 +16,7 @@ class LoadingScreen {
 
   void show({
     required BuildContext context,
-    String text = Strings.loading,
+    String text = ComponentStrings.loading,
   }) {
     if (_controller?.update(text) ?? false) {
       return;
