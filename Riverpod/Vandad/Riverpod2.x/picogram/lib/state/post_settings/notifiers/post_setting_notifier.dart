@@ -4,8 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../post_settings.dart';
 
-typedef PostSettingState = Map<PostSetting, bool>;
-
 class PostSettingNotifier extends StateNotifier<PostSettingState> {
   PostSettingNotifier()
       : super(
