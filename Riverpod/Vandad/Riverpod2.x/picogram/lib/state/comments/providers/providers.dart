@@ -1,1 +1,2 @@
-export 'delete_comment_provoder.dart';
+export 'delete_comment_provider.dart';
+export 'send_comment_provider.dart';
