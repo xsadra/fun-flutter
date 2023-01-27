@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../state/state.dart';
 import '../../views/views.dart';
 
-class CreateNewPostView extends ConsumerStatefulWidget {
+class CreateNewPostView extends StatefulHookConsumerWidget {
   const CreateNewPostView({
     required this.file,
     required this.fileType,

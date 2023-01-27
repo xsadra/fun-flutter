@@ -37,7 +37,8 @@ class _MainViewState extends ConsumerState<MainView> {
                 if (!mounted) {
                   return;
                 }
-                Navigator.of(context).push(
+                Navigator.push(
+                  context,
                   MaterialPageRoute(
                     builder: (_) => CreateNewPostView(
                       file: videoFile,
@@ -58,7 +59,8 @@ class _MainViewState extends ConsumerState<MainView> {
                 if (!mounted) {
                   return;
                 }
-                Navigator.of(context).push(
+                Navigator.push(
+                  context,
                   MaterialPageRoute(
                     builder: (_) => CreateNewPostView(
                       file: imageFile,
