@@ -4,3 +4,4 @@ export 'auth/auth.dart';
 export 'post_settings/post_settings.dart';
 export 'posts/posts.dart';
 export 'user_info/user_info.dart';
+export 'comments/comments.dart';
