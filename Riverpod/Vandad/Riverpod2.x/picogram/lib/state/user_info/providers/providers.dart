@@ -1,0 +1,1 @@
+export 'user_info_model_provider.dart';
