@@ -1,0 +1,1 @@
+export 'create_new_post_view.dart';

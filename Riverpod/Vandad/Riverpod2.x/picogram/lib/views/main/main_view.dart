@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../state/auth/auth.dart';
+
+import '../../state/state.dart';
 import '../views.dart';
 
 class MainView extends ConsumerStatefulWidget {
@@ -27,19 +28,55 @@ class _MainViewState extends ConsumerState<MainView> {
           actions: [
             IconButton(
               icon: const FaIcon(FontAwesomeIcons.film),
-              onPressed: () async {},
+              onPressed: () async {
+                final videoFile = await ImagePickerHelper.pickVideo();
+                if (videoFile == null) {
+                  return;
+                }
+                ref.refresh(postSettingProvider);
+                if (!mounted) {
+                  return;
+                }
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                      file: videoFile,
+                      fileType: FileType.video,
+                    ),
+                  ),
+                );
+              },
             ),
             IconButton(
               icon: const Icon(Icons.add_photo_alternate_outlined),
-              onPressed: () async {},
+              onPressed: () async {
+                final imageFile = await ImagePickerHelper.pickImage();
+                if (imageFile == null) {
+                  return;
+                }
+                ref.refresh(postSettingProvider);
+                if (!mounted) {
+                  return;
+                }
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                      file: imageFile,
+                      fileType: FileType.image,
+                    ),
+                  ),
+                );
+              },
             ),
             IconButton(
               icon: const Icon(Icons.logout),
               onPressed: () async {
-                final shouldLogout =  await const LogoutDialog().present(context).then((value) => value ?? false);
+                final shouldLogout = await const LogoutDialog()
+                    .present(context)
+                    .then((value) => value ?? false);
                 log(shouldLogout.toString(), name: 'shouldLogout');
                 if (shouldLogout) {
-                 await ref.read(authStateProvider.notifier).logout();
+                  await ref.read(authStateProvider.notifier).logout();
                 }
               },
             ),
