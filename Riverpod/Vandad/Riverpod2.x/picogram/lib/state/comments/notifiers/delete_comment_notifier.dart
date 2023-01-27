@@ -3,8 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../state.dart';
 
-class DeleteCommentStateNotifier extends StateNotifier<IsLoading> {
-  DeleteCommentStateNotifier() : super(false);
+class DeleteCommentNotifier extends StateNotifier<IsLoading> {
+  DeleteCommentNotifier() : super(false);
 
   set isLoading(bool value) => state = value;
 
