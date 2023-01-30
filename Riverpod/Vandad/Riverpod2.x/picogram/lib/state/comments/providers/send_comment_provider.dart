@@ -1,8 +1,8 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart' show StateNotifierProvider;
 
-import '../../state.dart';
+import '../../state.dart' show IsLoading, SendCommentNotifier;
 
-final sendCommentNotifierProvider =
-StateNotifierProvider<SendCommentNotifier, IsLoading>(
-      (_) => SendCommentNotifier(),
+final sendCommentProvider =
+    StateNotifierProvider<SendCommentNotifier, IsLoading>(
+  (_) => SendCommentNotifier(),
 );
