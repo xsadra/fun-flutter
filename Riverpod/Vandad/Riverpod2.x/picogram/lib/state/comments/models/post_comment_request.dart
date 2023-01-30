@@ -7,13 +7,13 @@ class RequestForPostAndComment {
   const RequestForPostAndComment({
     required this.postId,
     required this.sortByCreatedAt,
-    required this.dateSorting,
+    required this.sortOrder,
     this.limit,
   });
 
   final PostId postId;
   final bool sortByCreatedAt;
-  final DateSorting dateSorting;
+  final SortOrder sortOrder;
   final int? limit;
 
   @override
@@ -23,13 +23,13 @@ class RequestForPostAndComment {
           runtimeType == other.runtimeType &&
           postId == other.postId &&
           sortByCreatedAt == other.sortByCreatedAt &&
-          dateSorting == other.dateSorting &&
+          sortOrder == other.sortOrder &&
           limit == other.limit;
 
   @override
   int get hashCode =>
       postId.hashCode ^
       sortByCreatedAt.hashCode ^
-      dateSorting.hashCode ^
+      sortOrder.hashCode ^
       limit.hashCode;
 }
