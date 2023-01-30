@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../lib.dart'
     show FirebaseCollectionName, FirebaseFieldsName, PostId;
 
-final postLikeCountProvider = StreamProvider.family.autoDispose<int, PostId>(
+final postLikesCountProvider = StreamProvider.family.autoDispose<int, PostId>(
   (ref, postId) {
     final controller = StreamController<int>();
 
