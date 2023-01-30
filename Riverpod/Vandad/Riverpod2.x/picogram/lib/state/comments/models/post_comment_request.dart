@@ -6,8 +6,8 @@ import '../../../lib.dart';
 class RequestForPostAndComment {
   const RequestForPostAndComment({
     required this.postId,
-    required this.sortByCreatedAt,
-    required this.sortOrder,
+    this.sortByCreatedAt = true,
+    this.sortOrder = SortOrder.newOnTop,
     this.limit,
   });
 

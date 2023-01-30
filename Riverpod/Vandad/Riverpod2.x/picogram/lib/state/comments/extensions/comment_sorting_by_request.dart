@@ -1,4 +1,4 @@
-import '../../../lib.dart';
+import '../../../lib.dart' show Comment, RequestForPostAndComment, SortOrder;
 
 extension Sorting on Iterable<Comment> {
   Iterable<Comment> sortByRequest(RequestForPostAndComment request) {
