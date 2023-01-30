@@ -6,3 +6,4 @@ export 'animations/animations.dart';
 export 'dialogs/dialogs.dart';
 export 'file_thumbnail_view.dart';
 export 'comment/comment.dart';
+export 'rich_two_parts_text.dart';
