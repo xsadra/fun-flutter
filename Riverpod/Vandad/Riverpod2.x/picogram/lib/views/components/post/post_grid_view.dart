@@ -2,8 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../../../state/posts/posts.dart';
-import 'post.dart';
+import '../../../lib.dart' show Post, PostDetailsView, PostThumbnailView;
 
 class PostGridView extends StatelessWidget {
   const PostGridView({
@@ -27,7 +26,11 @@ class PostGridView extends StatelessWidget {
         return PostThumbnailView(
           post: post,
           onTapped: () {
-            // Todo: Navigate to PostView
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => PostDetailsView(post: post),
+              ),
+            );
             log('Post tapped: ${post.postId}', name: 'PostGridView');
           },
         );

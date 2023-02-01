@@ -112,11 +112,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
   ) =>
       Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            LikeCountView(postId: postId),
-          ],
-        ),
+        child: LikeCountView(postId: postId),
       );
 
   Widget _buildCommentButton(
