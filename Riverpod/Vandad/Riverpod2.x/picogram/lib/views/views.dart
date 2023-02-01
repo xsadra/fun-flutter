@@ -6,3 +6,4 @@ export 'tabs/tabs.dart';
 export 'create_new_post/create_new_post.dart';
 export 'post_comments/post_comments.dart';
 export 'extensions/extensions.dart';
+export 'post_details/post_details.dart';
