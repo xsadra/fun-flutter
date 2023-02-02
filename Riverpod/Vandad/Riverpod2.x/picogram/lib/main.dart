@@ -1,18 +1,17 @@
+import 'dart:developer' show log;
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
-import 'state/auth/providers/providers.dart';
-import 'views/components/animations/animations.dart';
-import 'views/components/components.dart';
-import 'views/login/login.dart';
-
-extension Log on Object {
-  void log([String? message]) {
-    debugPrint('$runtimeType: $message - ${toString()}');
-  }
-}
+import 'lib.dart'
+    show
+        LoadingScreen,
+        LoginView,
+        MainView,
+        isLoadingProvider,
+        isLoggedInProvider;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +37,7 @@ class MyApp extends StatelessWidget {
       home: Consumer(
         builder: (BuildContext context, WidgetRef ref, Widget? child) {
           ref.listen<bool>(isLoadingProvider, (_, isLoading) {
+            log(isLoading.toString(), name: 'isLoading');
             if (isLoading) {
               LoadingScreen.instance().show(context: context);
             } else {
@@ -48,41 +48,6 @@ class MyApp extends StatelessWidget {
           final isLoggedIn = ref.watch(isLoggedInProvider);
           return isLoggedIn ? const MainView() : const LoginView();
         },
-      ),
-    );
-  }
-}
-
-class MainView extends ConsumerWidget {
-  const MainView({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('PicoGram'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              ref.read(authStateProvider.notifier).logout();
-            },
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: const [
-            DataNotFoundAnimationView(),
-            EmptyContentsAnimationView(),
-            EmptyContentsWithTextAnimationView(text: 'text'),
-            ErrorAnimationView(),
-            SmallErrorAnimationView(),
-            LoadingAnimationView(),
-          ],
-        ),
       ),
     );
   }

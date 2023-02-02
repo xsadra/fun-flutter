@@ -94,8 +94,8 @@ class _MainViewState extends ConsumerState<MainView> {
         body: const TabBarView(
           children: [
             UserPostsView(),
-            UserPostsView(),
-            UserPostsView(),
+            SearchView(),
+            HomeView(),
           ],
         ),
       ),
