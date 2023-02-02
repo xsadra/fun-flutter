@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:picogram/views/components/post/post_sliver_grid_view.dart';
 
 import '../../lib.dart'
     show
@@ -7,7 +8,6 @@ import '../../lib.dart'
         EmptyContentsWithTextAnimationView,
         DataNotFoundAnimationView,
         ErrorAnimationView,
-        PostGridView,
         postBySearchTermProvider,
         SearchTerm;
 
@@ -22,20 +22,28 @@ class SearchGridView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (searchTerm.isEmpty) {
-      return const EmptyContentsWithTextAnimationView(
-        text: Strings.enterYourSearchTerm,
+      return const SliverToBoxAdapter(
+        child: EmptyContentsWithTextAnimationView(
+          text: Strings.enterYourSearchTerm,
+        ),
       );
     }
     final posts = ref.watch(postBySearchTermProvider(searchTerm));
     return posts.when(
       data: (posts) {
         if (posts.isEmpty) {
-          return const DataNotFoundAnimationView();
+          return const SliverToBoxAdapter(
+            child: DataNotFoundAnimationView(),
+          );
         }
-        return PostGridView(posts: posts);
+        return PostSliverGridView(posts: posts);
       },
-      error: (_, __) => const ErrorAnimationView(),
-      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (_, __) => const SliverToBoxAdapter(
+        child: ErrorAnimationView(),
+      ),
+      loading: () => const SliverToBoxAdapter(
+        child: Center(child: CircularProgressIndicator()),
+      ),
     );
   }
 }

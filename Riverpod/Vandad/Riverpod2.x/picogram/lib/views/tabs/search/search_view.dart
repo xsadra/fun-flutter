@@ -21,10 +21,10 @@ class SearchView extends HookConsumerWidget {
       return () {};
     }, [controller]);
 
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
             padding: const EdgeInsets.all(8),
             child: TextField(
               controller: controller,
@@ -42,12 +42,9 @@ class SearchView extends HookConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: SearchGridView(searchTerm: searchTerm.value),
-          ),
-        ],
-      ),
+        ),
+        SearchGridView(searchTerm: searchTerm.value),
+      ],
     );
   }
 }
