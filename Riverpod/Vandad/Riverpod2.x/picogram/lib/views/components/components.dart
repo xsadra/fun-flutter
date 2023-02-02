@@ -9,3 +9,4 @@ export 'comment/comment.dart';
 export 'rich_two_parts_text.dart';
 export 'like_count_view.dart';
 export 'like_button.dart';
+export 'search_grid_view.dart';
