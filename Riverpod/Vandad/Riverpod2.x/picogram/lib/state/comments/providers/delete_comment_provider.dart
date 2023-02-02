@@ -1,8 +1,8 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../state.dart';
+import '../../state.dart' show IsLoading, DeleteCommentNotifier;
 
-final deleteCommentNotifierProvider =
+final deleteCommentProvider =
     StateNotifierProvider<DeleteCommentNotifier, IsLoading>(
   (_) => DeleteCommentNotifier(),
 );

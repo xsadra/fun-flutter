@@ -1,6 +1,6 @@
 import 'dart:developer' show log;
 
-import 'package:cloud_firestore/cloud_firestore.dart' show FirebaseFirestore;
+import 'package:cloud_firestore/cloud_firestore.dart' show FieldPath, FirebaseFirestore;
 import 'package:firebase_storage/firebase_storage.dart' show FirebaseStorage;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -27,16 +27,16 @@ class DeletePostStateNotifier extends StateNotifier<IsLoading> {
     try {
       await FirebaseStorage.instance
           .ref()
-          .child(post.postId)
+          .child(post.userId)
           .child(FirebaseCollectionName.thumbnails)
           .child(post.thumbnailStorageId)
           .delete()
           .catchError(
-              (e) => log(e.toString(), name: 'DeletePostStateNotifier'));
+              (e) => log(e.toString(), name: 'DeletePostStateNotifier-thumbnails'));
 
       await FirebaseStorage.instance
           .ref()
-          .child(post.postId)
+          .child(post.userId)
           .child(post.fileType.collectionName)
           .child(post.originalFileStorageId)
           .delete()
@@ -55,10 +55,11 @@ class DeletePostStateNotifier extends StateNotifier<IsLoading> {
 
       final postRef = await FirebaseFirestore.instance
           .collection(FirebaseCollectionName.posts)
-          .where(FirebaseFieldsName.postId, isEqualTo: post.postId)
+          .where(FieldPath.documentId, isEqualTo: post.postId)
           .limit(1)
           .get();
       for (var doc in postRef.docs) {
+        log('${doc.reference.path} deleted' , name: 'DeletePostStateNotifier');
         doc.reference.delete();
       }
       return true;
@@ -81,10 +82,12 @@ class DeletePostStateNotifier extends StateNotifier<IsLoading> {
             .collection(collectionPath)
             .where(FirebaseFieldsName.postId, isEqualTo: postId)
             .get();
-        for (var doc in postRef.docs) {
+        for (final doc in postRef.docs) {
           transaction.delete(doc.reference);
         }
       },
     );
+    log('$postId deleted', name: 'DeletePostStateNotifier'  ) ;
+    log('$collectionPath deleted', name: 'DeletePostStateNotifier');
   }
 }

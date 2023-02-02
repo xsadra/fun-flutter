@@ -3,9 +3,13 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../auth/auth.dart';
-import '../../state.dart';
-import '../posts.dart';
+import '../../state.dart'
+    show
+        Post,
+        PostKey,
+        userIdProvider,
+        FirebaseCollectionName,
+        FirebaseFieldsName;
 
 final userPostProvider = StreamProvider.autoDispose<Iterable<Post>>((ref) {
   final userId = ref.watch(userIdProvider);

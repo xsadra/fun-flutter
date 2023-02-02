@@ -1,14 +1,27 @@
-import 'dart:io';
+import 'dart:io' show File;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show Uint8List;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image/image.dart' as img;
-import 'package:uuid/uuid.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
+import 'package:uuid/uuid.dart' show Uuid;
+import 'package:video_thumbnail/video_thumbnail.dart'
+    show ImageFormat, VideoThumbnail;
 
-import '../../state.dart';
+import '../../state.dart'
+    show
+        CollectionName,
+        CouldNotBuildThumbnailException,
+        FileType,
+        FirebaseCollectionName,
+        GetImageDataAspectRatio,
+        ImageConstants,
+        IsLoading,
+        PostPayload,
+        PostSetting,
+        UserId,
+        isNotLoading;
 
 class ImageUploadNotifier extends StateNotifier<IsLoading> {
   ImageUploadNotifier() : super(isNotLoading);
