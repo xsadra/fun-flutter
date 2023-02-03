@@ -29,6 +29,7 @@ class LikeButton extends ConsumerWidget {
           icon: FaIcon(
             // hasLike ? Icons.favorite : Icons.favorite_border,
             hasLike ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
+            color: hasLike ? Colors.red :null,
           ),
           onPressed: () {
             final userId = ref.read(userIdProvider);
@@ -37,7 +38,7 @@ class LikeButton extends ConsumerWidget {
             }
             ref.read(
               likeDislikePostProvider(
-                LikeDislikeRequest(postId: postId, userId: userId),
+                request: LikeDislikeRequest(postId: postId, userId: userId),
               ),
             );
           },

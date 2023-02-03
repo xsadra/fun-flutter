@@ -14,7 +14,9 @@ class FileThumbnailView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final thumbnail = ref.watch(thumbnailProvider(thumbnailRequest));
+    final thumbnail = ref.watch(thumbnailProvider(
+      request: thumbnailRequest,
+    ));
     return thumbnail.when(
       data: (imageWithAspectRatio) => AspectRatio(
         aspectRatio: imageWithAspectRatio.aspectRatio,

@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:picogram/state/state.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final likeDislikePostProvider = FutureProvider.autoDispose
-    .family<bool, LikeDislikeRequest>((ref, request) async {
+part 'like_dislike_post_provider.g.dart';
+
+@riverpod
+Future<bool> likeDislikePost(LikeDislikePostRef ref,
+    {required LikeDislikeRequest request}) async {
   final query = FirebaseFirestore.instance
       .collection(FirebaseCollectionName.likes)
       .where(FirebaseFieldsName.postId, isEqualTo: request.postId)
@@ -34,4 +37,4 @@ final likeDislikePostProvider = FutureProvider.autoDispose
   } catch (e) {
     return false;
   }
-});
+}
