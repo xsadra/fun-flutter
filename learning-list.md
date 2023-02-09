@@ -25,11 +25,11 @@
   - [Riverpod 2.x Code Generator for Flutter Developers](https://www.youtube.com/watch?v=mYCGdogbuH8) - [Youtube] - ✅
 
 - **Flutter Animation**
-  - [Flutter: Custom Wave Slider](https://www.youtube.com/playlist?list=PLjr4ufdmNA4J2-KwMutexAjjf_VmjL1eH)
+  - [Flutter: Custom Wave Slider 📁](https://www.youtube.com/playlist?list=PLjr4ufdmNA4J2-KwMutexAjjf_VmjL1eH)
 
 
 - **Rive**
-  - [Rive Tutorials](https://www.youtube.com/playlist?list=PLjr4ufdmNA4LvEvDVkIugXpCLub9E9f3g)
+  - [Rive Tutorials 📁](https://www.youtube.com/playlist?list=PLjr4ufdmNA4LvEvDVkIugXpCLub9E9f3g)
 
 - **Dart**
   - [Custom Operators in Dart](https://youtu.be/HvZZqfK1hhQ) - [Youtube] - ✅
@@ -37,6 +37,14 @@
   - [Generics in Dart](https://www.youtube.com/watch?v=hjwFh_UOVu0) - [Youtube] - ✅
   - [Exceptions and Errors](https://www.youtube.com/watch?v=2uyMvzTr9xI) - [Youtube] - ✅
 
+- **UI**
+  - [Stretchy Header](https://youtu.be/nvwZO5wgCYQ)
+  - [Staggered Grid View](https://youtu.be/h0H2t7fOGU4)
+  - [Popup Card](https://youtu.be/Bxs8Zy2O4wk)
+  - [Unique sign in form built with Lit Firebase Auth and Flutter](https://youtu.be/bpvpbQF-2Js)
+
+- **Web**
+  - [Rich Text Editing Experience with Flutter Web and Appwrite](https://youtu.be/0_GJ1w_iG44)
 
 
 ## List of useful Videos:
@@ -48,7 +56,8 @@
   - [Easy to use Icons for Flutter | Font Awesome](https://youtu.be/FFh0z5IWHWc)
   - [Flutter Version Management](https://youtu.be/v9iRjM-K1SM)
 
-
+- **Web**
+  - [Flutter Web Devlog 📁](https://www.youtube.com/playlist?list=PLjr4ufdmNA4LFPogroagyi8CylQH2XJNx)
 
 
 <!--
