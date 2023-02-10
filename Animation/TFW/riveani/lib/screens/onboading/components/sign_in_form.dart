@@ -16,7 +16,7 @@ class SignInForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            Assets.email,
+            Strings.email,
             style: TextStyle(color: Colors.black54),
           ),
           Padding(
@@ -31,7 +31,7 @@ class SignInForm extends StatelessWidget {
             ),
           ),
           const Text(
-            Assets.password,
+            Strings.password,
             style: TextStyle(color: Colors.black54),
           ),
           Padding(
