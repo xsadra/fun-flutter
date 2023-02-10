@@ -1,3 +1,4 @@
+import 'package:arive/constants.dart';
 import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
@@ -22,7 +23,7 @@ class AnimatedButton extends StatelessWidget {
         child: Stack(
           children: [
             RiveAnimation.asset(
-              "assets/RiveAssets/button.riv",
+              Assets.buttonRive,
               controllers: [_animationController],
             ),
             Positioned.fill(
@@ -33,7 +34,7 @@ class AnimatedButton extends StatelessWidget {
                   Icon(CupertinoIcons.arrow_right),
                   SizedBox(width: 8),
                   Text(
-                    "Enjoy the App",
+                   Strings.animatedButtonText ,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,

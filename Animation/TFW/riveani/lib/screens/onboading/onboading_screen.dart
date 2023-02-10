@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:arive/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
@@ -33,7 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             width: MediaQuery.of(context).size.width * 1.7,
             bottom: 200,
             left: 100,
-            child: Image.asset('assets/Backgrounds/Spline.png'),
+            child: Image.asset(Assets.spline),
           ),
           Positioned.fill(
             child: BackdropFilter(
@@ -41,7 +42,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: const SizedBox(),
             ),
           ),
-          const RiveAnimation.asset('assets/RiveAssets/shapes.riv'),
+          const RiveAnimation.asset(Assets.shapesRive),
           Positioned.fill(
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
@@ -60,7 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: Column(
                       children: const [
                         Text(
-                          'Here is lovely Vet-Pet',
+                          Strings.onboardingTitle,
                           style: TextStyle(
                             fontSize: 60,
                             fontFamily: 'Poppins',
@@ -68,13 +69,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                         ),
                         SizedBox(height: 16),
-                        Text("The aim is to create an electronic health"
-                            " record for pets. In addition to parameters"
-                            " that are filled in by the pet owner himself,"
-                            " relevant parameters from the pet's stool"
-                            " analysis are included in the pet's health"
-                            " dashboard after a subscription has been"
-                            " taken out."),
+                        Text(
+                          Strings.onboardingSubtitle,
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -88,10 +88,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 24),
                     child: Text(
-                      "This dashboard is the heart of "
-                      "the interface and gives a quick overview "
-                      "of the animal's most important health "
-                      "parameters.",
+                      Strings.onboardingDescription,
                     ),
                   )
                 ],
