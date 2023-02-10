@@ -25,19 +25,19 @@ flutter:
   uses-material-design: true
   assets:
     - assets/avaters/
-    - assets/Backgrounds/
+    - assets/backgrounds/
     - assets/icons/
-    - assets/RiveAssets/
+    - assets/rive_assets/
 
   fonts:
     - family: Intel
       fonts:
-        - asset: assets/Fonts/Inter-Regular.ttf
-        - asset: assets/Fonts/Inter-SemiBold.ttf
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-SemiBold.ttf
           weight: 600
     - family: Poppins
       fonts:
-        - asset: assets/Fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
   
   
