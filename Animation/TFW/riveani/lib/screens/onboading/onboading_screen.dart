@@ -1,8 +1,9 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+
+import 'components/animated_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -51,7 +52,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Spacer(),
                   SizedBox(
                     width: 260,
                     child: Column(
@@ -75,40 +78,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ],
                     ),
                   ),
-                  GestureDetector(
+                  const Spacer(flex: 2),
+                  AnimatedButton(
+                    animationController: _btnAnimationController,
                     onTap: () {
                       _btnAnimationController.isActive = true;
                     },
-                    child: SizedBox(
-                      height: 64,
-                      width: 260,
-                      child: Stack(
-                        children: [
-                          RiveAnimation.asset(
-                            "assets/RiveAssets/button.riv",
-                            controllers: [_btnAnimationController],
-                          ),
-                          Positioned.fill(
-                            top: 8,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Icon(CupertinoIcons.arrow_right),
-                                SizedBox(width: 8),
-                                Text(
-                                  "Enjoy the App",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                   ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 24),
+                    child: Text(
+                      "This dashboard is the heart of "
+                      "the interface and gives a quick overview "
+                      "of the animal's most important health "
+                      "parameters.",
+                    ),
+                  )
                 ],
               ),
             ),
