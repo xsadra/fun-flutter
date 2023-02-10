@@ -1,0 +1,44 @@
+name: arive
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  rive: ^0.10.1
+  flutter_svg: ^1.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/avaters/
+    - assets/Backgrounds/
+    - assets/icons/
+    - assets/RiveAssets/
+
+  fonts:
+    - family: Intel
+      fonts:
+        - asset: assets/Fonts/Inter-Regular.ttf
+        - asset: assets/Fonts/Inter-SemiBold.ttf
+          weight: 600
+    - family: Poppins
+      fonts:
+        - asset: assets/Fonts/Poppins-Bold.ttf
+          weight: 700
+  
+  
+  
+
