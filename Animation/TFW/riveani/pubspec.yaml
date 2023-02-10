@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  cupertino_icons: ^1.0.5
   rive: ^0.10.1
   flutter_svg: ^1.1.6
 
