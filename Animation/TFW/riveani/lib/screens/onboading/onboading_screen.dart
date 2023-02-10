@@ -110,6 +110,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       barrierDismissible: true,
       barrierLabel: Strings.signInTitle,
       context: context,
+      transitionDuration: const Duration(milliseconds: 400),
+      transitionBuilder: (_, animation, __, child) {
+        Tween<Offset> tween =
+            Tween(begin: const Offset(0, -1), end: Offset.zero);
+        return SlideTransition(
+          position: tween.animate(
+            CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+          ),
+          child: child,
+        );
+      },
       pageBuilder: (context, _, __) => Center(
         child: Container(
           height: 620,
