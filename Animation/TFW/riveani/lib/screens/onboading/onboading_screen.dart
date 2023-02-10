@@ -12,6 +12,17 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  late RiveAnimationController _btnAnimationController;
+
+  @override
+  void initState() {
+    _btnAnimationController = OneShotAnimation(
+      'active',
+      autoplay: false,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,32 +65,48 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                         ),
                         SizedBox(height: 16),
-                        Text(
-                            "The aim is to create an electronic health record for pets. In addition to parameters that are filled in by the pet owner himself, relevant parameters from the pet's stool analysis are included in the pet's health dashboard after a subscription has been taken out."),
+                        Text("The aim is to create an electronic health"
+                            " record for pets. In addition to parameters"
+                            " that are filled in by the pet owner himself,"
+                            " relevant parameters from the pet's stool"
+                            " analysis are included in the pet's health"
+                            " dashboard after a subscription has been"
+                            " taken out."),
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 64,
-                    width: 260,
-                    child: Stack(
-                      children: [
-                        const RiveAnimation.asset("assets/RiveAssets/button.riv"),
-                        Positioned.fill(
-                          top: 8,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(CupertinoIcons.arrow_right),
-                              SizedBox(width: 8),
-                              Text(
-                                "Enjoy the App",
-                              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16,),
-                              ),
-                            ],
+                  GestureDetector(
+                    onTap: () {
+                      _btnAnimationController.isActive = true;
+                    },
+                    child: SizedBox(
+                      height: 64,
+                      width: 260,
+                      child: Stack(
+                        children: [
+                          RiveAnimation.asset(
+                            "assets/RiveAssets/button.riv",
+                            controllers: [_btnAnimationController],
                           ),
-                        ),
-                      ],
+                          Positioned.fill(
+                            top: 8,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(CupertinoIcons.arrow_right),
+                                SizedBox(width: 8),
+                                Text(
+                                  "Enjoy the App",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
