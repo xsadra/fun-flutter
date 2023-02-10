@@ -41,11 +41,11 @@
 
 ## List of useful Videos:
 - **Flutter Packages**
-  - [Flutter BlurHash Package | Beautiful Placeholder Images](https://youtu.be/zdUI3Vhv3Fg)
+  - [Flutter BlurHash Package - Beautiful Placeholder Images](https://youtu.be/zdUI3Vhv3Fg)
   - [Preview Flutter Applications on Multiple Devices](https://youtu.be/ObD6Jgvc71k)
-  - [Flutter Local Authentication | Fingerprint and FaceID](https://youtu.be/4-P_Su9O5NM)
+  - [Flutter Local Authentication - Fingerprint and FaceID](https://youtu.be/4-P_Su9O5NM)
   - [Flutter Sequence Animations](https://youtu.be/a4v6Kx6uRVs)
-  - [Easy to use Icons for Flutter | Font Awesome](https://youtu.be/FFh0z5IWHWc)
+  - [Easy to use Icons for Flutter - Font Awesome](https://youtu.be/FFh0z5IWHWc)
   - [Flutter Version Management](https://youtu.be/v9iRjM-K1SM)
 
 - **Web**
