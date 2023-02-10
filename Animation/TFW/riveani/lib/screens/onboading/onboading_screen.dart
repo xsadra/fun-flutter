@@ -1,12 +1,11 @@
-import 'dart:ui';
+import 'dart:ui' show ImageFilter;
 
 import 'package:arive/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:rive/rive.dart';
 
 import 'components/animated_button.dart';
-import 'components/sign_in_form.dart';
+import 'components/show_sign_in_dialog.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -17,6 +16,7 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   late RiveAnimationController _btnAnimationController;
+  bool isSignInDialogShown = false;
 
   @override
   void initState() {
@@ -51,185 +51,69 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: const SizedBox(),
             ),
           ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Spacer(),
-                  SizedBox(
-                    width: 270, // must be 160
-                    child: Column(
-                      children: const [
-                        Text(
-                          Strings.onboardingTitle,
-                          style: TextStyle(
-                            fontSize: 60,
-                            fontFamily: 'Poppins',
-                            height: 1.2,
+          AnimatedPositioned(
+            top: isSignInDialogShown ? -50 : 0,
+            duration: const Duration(milliseconds: 240),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Spacer(),
+                    SizedBox(
+                      width: 270, // must be 160
+                      child: Column(
+                        children: const [
+                          Text(
+                            Strings.onboardingTitle,
+                            style: TextStyle(
+                              fontSize: 60,
+                              fontFamily: 'Poppins',
+                              height: 1.2,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 16),
-                        Text(
-                          Strings.onboardingSubtitle,
-                          style: TextStyle(
-                            fontSize: 16,
+                          SizedBox(height: 16),
+                          Text(
+                            Strings.onboardingSubtitle,
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  const Spacer(flex: 2),
-                  AnimatedButton(
-                    animationController: _btnAnimationController,
-                    onTap: () {
-                      _btnAnimationController.isActive = true;
-                      Future.delayed(const Duration(milliseconds: 800), () {
-                        showSignInDialog(context);
-                      });
-                    },
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 24),
-                    child: Text(
-                      Strings.onboardingDescription,
+                    const Spacer(flex: 2),
+                    AnimatedButton(
+                      animationController: _btnAnimationController,
+                      onTap: () {
+                        _btnAnimationController.isActive = true;
+                        Future.delayed(const Duration(milliseconds: 800), () {
+                          setState(() {
+                            isSignInDialogShown = true;
+                          });
+                          showSignInDialog(context, onClose: (_) {
+                            setState(() {
+                              isSignInDialogShown = false;
+                            });
+                          },);
+                        });
+                      },
                     ),
-                  )
-                ],
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 24),
+                      child: Text(
+                        Strings.onboardingDescription,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Future<Object?> showSignInDialog(BuildContext context) {
-    return showGeneralDialog(
-      barrierDismissible: true,
-      barrierLabel: Strings.signInTitle,
-      context: context,
-      transitionDuration: const Duration(milliseconds: 400),
-      transitionBuilder: (_, animation, __, child) {
-        Tween<Offset> tween =
-            Tween(begin: const Offset(0, -1), end: Offset.zero);
-        return SlideTransition(
-          position: tween.animate(
-            CurvedAnimation(parent: animation, curve: Curves.easeInOut),
-          ),
-          child: child,
-        );
-      },
-      pageBuilder: (context, _, __) => Center(
-        child: Container(
-          height: 620,
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          padding: const EdgeInsets.symmetric(
-            vertical: 32,
-            horizontal: 24,
-          ),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.92),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(40),
-            ),
-          ),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Column(
-                  children: [
-                    const Text(
-                      Strings.signInTitle,
-                      style: TextStyle(
-                        fontSize: 34,
-                        fontFamily: 'Poppins',
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      child: Text(
-                        Strings.signInDescription,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ),
-                    const SignInForm(),
-                    Row(
-                      children: const [
-                        Expanded(child: Divider()),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          child: Text(
-                            'Or',
-                            style:
-                                TextStyle(color: Colors.black54, fontSize: 16),
-                          ),
-                        ),
-                        Expanded(child: Divider()),
-                      ],
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
-                      child: Text(
-                        'Sign up with Email, Apple or Google',
-                        style: TextStyle(color: Colors.black54),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          padding: EdgeInsets.zero,
-                          icon: SvgPicture.asset(
-                            Assets.emailBox,
-                            height: 64,
-                            width: 64,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          padding: EdgeInsets.zero,
-                          icon: SvgPicture.asset(
-                            Assets.appleBox,
-                            height: 64,
-                            width: 64,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          padding: EdgeInsets.zero,
-                          icon: SvgPicture.asset(
-                            Assets.googleBox,
-                            height: 64,
-                            width: 64,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                const Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: -48,
-                  child: CircleAvatar(
-                    radius: 16,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.close,
-                      color: Colors.black54,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }
