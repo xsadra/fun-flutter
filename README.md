@@ -2,7 +2,7 @@
 
 
 ## List of tutorials:
-- [Riverpod 2.0 – Complete Guide (Flutter Tutorial)](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/ResoCoder/riverpod2)\
+- [Riverpod 2.0 – Complete Guide (Flutter Tutorial)](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/ResoCoder/riverpod2)
 - [Riverpod 2.x Course for Flutter Developers](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x)
   - [Example 1](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example1)
   - [Example 2](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example2)
@@ -10,7 +10,8 @@
   - [Example 4](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example4)
   - [Example 5](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example5)
   - [Example 6](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example6)
-  - [PicoGram](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/picogram) - [💻 Current task]
+  - [PicoGram](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/picogram) <!-- - [💻 Current task] -->
+     - [Download the PicoGram App 📱](https://github.com/Arti-Sadra/fun-flutter/releases/tag/v1.0.0-alpha)
 
 <br><br>
 ## List of Code Snippets:
