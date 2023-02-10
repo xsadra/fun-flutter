@@ -26,6 +26,7 @@
 
 - **Flutter Animation**
   - [Flutter: Custom Wave Slider 📁](https://www.youtube.com/playlist?list=PLjr4ufdmNA4J2-KwMutexAjjf_VmjL1eH)
+  - [Build an Animated App with Rive and Flutter 📁](https://youtu.be/Td3xEWwRAQA) - [Current Tutorial 📌]
 
 
 - **Rive**
