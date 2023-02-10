@@ -1,3 +1,4 @@
+import 'package:arive/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/onboading/onboading_screen.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Rive Animation',
+      title: Strings.appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFEEF1F8),
