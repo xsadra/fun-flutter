@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 import 'components/animated_button.dart';
+import 'components/sign_in_form.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -57,7 +58,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 children: [
                   const Spacer(),
                   SizedBox(
-                    width: 260,
+                    width: 270, // must be 160
                     child: Column(
                       children: const [
                         Text(
@@ -83,6 +84,51 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     animationController: _btnAnimationController,
                     onTap: () {
                       _btnAnimationController.isActive = true;
+
+                      showGeneralDialog(
+                        barrierDismissible: true,
+                        barrierLabel: Strings.signInTitle,
+                        context: context,
+                        pageBuilder: (context, _, __) => Center(
+                          child: Container(
+                            height: 620,
+                            margin: const EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 32,
+                              horizontal: 24,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.92),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(40),
+                              ),
+                            ),
+                            child: Scaffold(
+                              backgroundColor: Colors.transparent,
+                              body: Column(
+                                children: const [
+                                  Text(
+                                    Strings.signInTitle,
+                                    style: TextStyle(
+                                      fontSize: 34,
+                                      fontFamily: 'Poppins',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 16),
+                                    child: Text(
+                                      Strings.signInDescription,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 15),
+                                    ),
+                                  ),
+                                  SignInForm(),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
                     },
                   ),
                   const Padding(
