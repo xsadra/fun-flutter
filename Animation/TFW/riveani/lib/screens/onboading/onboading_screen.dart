@@ -1,9 +1,9 @@
 import 'dart:ui' show ImageFilter;
 
-import 'package:arive/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
+import '../../constants.dart';
 import 'components/animated_button.dart';
 import 'components/show_sign_in_dialog.dart';
 
