@@ -145,7 +145,7 @@ class _SignInFormState extends State<SignInForm> {
                 child: RiveAnimation.asset(
                   Assets.checkRive,
                   onInit: (artboard) {
-                    final controller = RiveUtils.getRiveController(artboard);
+                    final controller = RiveUtils.getController(artboard);
                     check = controller.findSMI('Check') as SMITrigger;
                     error = controller.findSMI('Error') as SMITrigger;
                     reset = controller.findSMI('Reset') as SMITrigger;
@@ -161,7 +161,7 @@ class _SignInFormState extends State<SignInForm> {
                     Assets.confettiRive,
                     onInit: (artboard) {
                       StateMachineController controller =
-                          RiveUtils.getRiveController(artboard);
+                          RiveUtils.getController(artboard);
                       confetti =
                           controller.findSMI('Trigger explosion') as SMITrigger;
                     },

@@ -1,9 +1,12 @@
 import 'package:rive/rive.dart';
 
-class RiveUtils{
- static StateMachineController getRiveController(Artboard artboard, {stateMachineName = 'State Machine 1'}) {
+class RiveUtils {
+  RiveUtils._();
+
+  static StateMachineController getController(Artboard artboard,
+      {stateMachineName = 'State Machine 1'}) {
     StateMachineController? controller =
-    StateMachineController.fromArtboard(artboard,stateMachineName);
+        StateMachineController.fromArtboard(artboard, stateMachineName);
     if (controller == null) {
       throw Exception('State Machine not found');
     }
