@@ -5,6 +5,7 @@ import '../components/animated_bar.dart';
 import '../constants.dart';
 import '../models/rive_asset.dart';
 import '../utils/rive_utils.dart';
+import 'home/home_screen.dart';
 
 class EntryPoint extends StatefulWidget {
   const EntryPoint({Key? key}) : super(key: key);
@@ -19,9 +20,9 @@ class _EntryPointState extends State<EntryPoint> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text('Hello World'),
-      ),
+      resizeToAvoidBottomInset: false,
+      extendBody: true,
+      body: const HomeScreen(),
       bottomNavigationBar: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(12),
