@@ -1,3 +1,4 @@
+import 'package:arive/components/side_menu.dart';
 import 'package:arive/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           errorBorder: defaultInputBorder,
         ),
       ),
-      home: const OnboardingScreen(),
+      home: const SideMenu(),
     );
   }
 }
