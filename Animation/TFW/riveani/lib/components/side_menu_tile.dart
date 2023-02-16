@@ -30,10 +30,11 @@ class SideMenuTile extends StatelessWidget {
         Stack(
           children: [
             AnimatedPositioned(
+              curve: Curves.fastOutSlowIn,
               left: 0,
               height: 56,
-              width: isActive? 287 : 0,
-              duration: const Duration(milliseconds: 300),
+              width: isActive ? 287 : 0,
+              duration: const Duration(milliseconds: 200),
               child: Container(
                 decoration: BoxDecoration(
                   color: const Color(0xFF6792FF),

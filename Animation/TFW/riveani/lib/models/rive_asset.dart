@@ -81,3 +81,17 @@ List<RiveAsset> sideMenus = [
     src: Assets.iconsRive,
   ),
 ];
+List<RiveAsset> sideMenusHistory = [
+  RiveAsset(
+    artboard: 'TIMER',
+    stateMachineName: 'TIMER_Interactivity',
+    title: 'History',
+    src: Assets.iconsRive,
+  ),
+  RiveAsset(
+    artboard: 'BELL',
+    stateMachineName: 'BELL_Interactivity',
+    title: 'Notification',
+    src: Assets.iconsRive,
+  ),
+];
