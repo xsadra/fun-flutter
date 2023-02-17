@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 40),
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text(
@@ -30,9 +31,9 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     ...courses
                         .map((course) => Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: CourseCard(course: course),
-                    ))
+                              padding: const EdgeInsets.only(left: 20),
+                              child: CourseCard(course: course),
+                            ))
                         .toList(),
                   ],
                 ),
@@ -48,9 +49,9 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               ...recentCourses.map(
-                    (course) => Padding(
+                (course) => Padding(
                   padding:
-                  const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                      const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                   child: SecondaryCourseCard(course: course),
                 ),
               ),
@@ -86,9 +87,9 @@ class SecondaryCourseCard extends StatelessWidget {
                 Text(
                   course.title,
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                 ),
                 const Text(
                   "Watch video - 15 mins",
