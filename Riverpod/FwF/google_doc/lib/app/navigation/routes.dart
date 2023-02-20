@@ -1,6 +1,6 @@
 import 'package:routemaster/routemaster.dart' hide TransitionPage;
 
-import '../components/auth/auth.dart';
+import '../../components/auth/auth.dart';
 import 'transition_page.dart';
 
 const _login = '/login';

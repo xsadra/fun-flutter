@@ -1,12 +1,19 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_doc/app/constants.dart';
+
+import '../repositories/repositories.dart';
+import 'constants.dart';
+
 
 abstract class Dependency {
   static Provider<Client> get client => _clientProvider;
   static Provider<Account> get account => _accountProvider;
   static Provider<Databases> get database => _databaseProvider;
   static Provider<Realtime> get realtime => _realtimeProvider;
+}
+
+abstract class Repository{
+  static Provider<AuthRepository> get auth => AuthRepository.provider;
 }
 
 final _clientProvider = Provider<Client>((ref) => Client()
