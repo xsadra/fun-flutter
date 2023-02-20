@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_doc/app/navigation/routes.dart';
+import 'package:routemaster/routemaster.dart';
 
 class GoogleDocApp extends ConsumerStatefulWidget {
   const GoogleDocApp({
@@ -13,6 +15,11 @@ class GoogleDocApp extends ConsumerStatefulWidget {
 class _GoogleDocAppState extends ConsumerState<GoogleDocApp> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp.router(
+      routeInformationParser: const RoutemasterParser(),
+      routerDelegate: RoutemasterDelegate(
+        routesBuilder: (context) => routesLoggedOut,
+      ),
+    );
   }
 }
