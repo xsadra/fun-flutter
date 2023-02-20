@@ -13,6 +13,8 @@ dependencies:
   flutter_riverpod: ^2.2.0
   routemaster: ^1.0.1
 
+  appwrite: ^8.2.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
