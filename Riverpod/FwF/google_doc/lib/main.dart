@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/app.dart';
 import 'app/core/log/logger.dart';
@@ -6,5 +7,9 @@ import 'app/core/log/logger.dart';
 void main() {
   initLogger();
 
-  runApp(const GoogleDocApp());
+  runApp(
+    const ProviderScope(
+      child: GoogleDocApp(),
+    ),
+  );
 }
