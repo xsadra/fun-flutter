@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:appwrite/appwrite.dart';
-import 'package:google_doc/app/core/log/logger.dart';
+
+import '../core/log/logger.dart';
+
 
 class RepositoryException implements Exception {
   RepositoryException({

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../repositories/repositories.dart';
 import 'constants.dart';
+import 'state/state.dart';
 
 
 abstract class Dependency {
@@ -14,6 +15,10 @@ abstract class Dependency {
 
 abstract class Repository{
   static Provider<AuthRepository> get auth => AuthRepository.provider;
+}
+
+abstract class AppState{
+  static StateNotifierProvider<AuthService, AuthState> get auth => AuthService.provider;
 }
 
 final _clientProvider = Provider<Client>((ref) => Client()

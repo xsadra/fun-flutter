@@ -12,6 +12,7 @@ dependencies:
   logging: ^1.1.1
   flutter_riverpod: ^2.2.0
   routemaster: ^1.0.1
+  equatable: ^2.0.5
 
   appwrite: ^8.2.2
 
