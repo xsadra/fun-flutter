@@ -1,6 +1,7 @@
 import 'package:routemaster/routemaster.dart' hide TransitionPage;
 
 import '../../components/auth/auth.dart';
+import '../../components/document/document.dart';
 import 'transition_page.dart';
 
 const _login = '/login';
@@ -18,8 +19,26 @@ abstract class AppRoutes {
   static String get newDocument => _newDocument;
 }
 
-final routesLoggedOut =
-    RouteMap(onUnknownRoute: (_) => const Redirect(_login), routes: {
-  _login: (_) => const TransitionPage(child: LoginPage()),
-  _register: (_) => const TransitionPage(child: RegisterPage()),
-});
+final routesLoggedOut = RouteMap(
+  onUnknownRoute: (_) => const Redirect(_login),
+  routes: {
+    _login: (_) => const TransitionPage(child: LoginPage()),
+    _register: (_) => const TransitionPage(child: RegisterPage()),
+  },
+);
+
+final routesLoggedIn = RouteMap(
+  onUnknownRoute: (_) => const Redirect(_newDocument),
+  routes: {
+    _newDocument: (_) => const TransitionPage(child: NewDocumentPage()),
+    '$_document/:id': (info) {
+      final id = info.pathParameters['id'];
+      if (id == null) {
+        return const Redirect(_newDocument);
+      }
+      return TransitionPage(
+        child: DocumentPage(documentId: id),
+      );
+    },
+  },
+);
