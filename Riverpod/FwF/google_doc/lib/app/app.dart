@@ -38,9 +38,13 @@ class _GoogleDocAppState extends ConsumerState<GoogleDocApp> {
         routesBuilder: (context) {
           final isAuthenticated = ref.watch(isAuthenticatedProvider);
 
-          return isAuthenticated? routesLoggedIn : routesLoggedOut;
+          return isAuthenticated ? routesLoggedIn : routesLoggedOut;
         },
       ),
     );
   }
+}
+
+abstract class AppColors {
+  static const secondary = Color(0xFF216BDD);
 }
