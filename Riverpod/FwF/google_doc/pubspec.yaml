@@ -16,6 +16,7 @@ dependencies:
   flutter_quill: ^6.4.4 # 4.1.0
   appwrite: ^8.2.2
   tuple: ^2.0.1
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:

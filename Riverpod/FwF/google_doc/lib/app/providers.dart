@@ -5,7 +5,6 @@ import '../repositories/repositories.dart';
 import 'constants.dart';
 import 'state/state.dart';
 
-
 abstract class Dependency {
   static Provider<Client> get client => _clientProvider;
   static Provider<Account> get account => _accountProvider;
@@ -13,12 +12,16 @@ abstract class Dependency {
   static Provider<Realtime> get realtime => _realtimeProvider;
 }
 
-abstract class Repository{
+abstract class Repository {
   static Provider<AuthRepository> get auth => AuthRepository.provider;
+
+  static Provider<DatabaseRepository> get database =>
+      DatabaseRepository.provider;
 }
 
-abstract class AppState{
-  static StateNotifierProvider<AuthService, AuthState> get auth => AuthService.provider;
+abstract class AppState {
+  static StateNotifierProvider<AuthService, AuthState> get auth =>
+      AuthService.provider;
 }
 
 final _clientProvider = Provider<Client>((ref) => Client()
