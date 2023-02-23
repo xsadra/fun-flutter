@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart' hide MenuBar;
-import 'package:flutter_quill/flutter_quill.dart';
+import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tuple/tuple.dart';
@@ -11,7 +10,7 @@ import 'state/document_controller.dart';
 import 'widgets/menu_bar.dart';
 
 final _quillControllerProvider =
-Provider.family<QuillController?, String>((ref, id) {
+    Provider.family<QuillController?, String>((ref, id) {
   final test = ref.watch(DocumentController.provider(id));
   return test.controller;
 });
@@ -31,6 +30,8 @@ class DocumentPage extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           MenuBar(
+            leading: [TitleTextEditor(documentId: documentId)],
+            trailing: [IsSavedIndicator(documentId: documentId)],
             newDocumentPressed: () {
               Routemaster.of(context).push(AppRoutes.newDocument);
             },
@@ -46,6 +47,103 @@ class DocumentPage extends ConsumerWidget {
     );
   }
 }
+
+final _documentTitleProvider = Provider.family<String?, String>((ref, id) {
+  final provider = ref.watch(DocumentController.provider(id));
+  return provider.documentPageData?.title;
+});
+
+class TitleTextEditor extends ConsumerStatefulWidget {
+  const TitleTextEditor({
+    required this.documentId,
+    Key? key,
+  }) : super(key: key);
+
+  final String documentId;
+
+  @override
+  ConsumerState createState() => _TitleTextEditorState();
+}
+
+class _TitleTextEditorState extends ConsumerState<TitleTextEditor> {
+  final TextEditingController _titleController = TextEditingController();
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen<String?>(
+      _documentTitleProvider(widget.documentId),
+      (previous, current) {
+        if (current != _titleController.text) {
+          _titleController.text = current ?? '';
+        }
+      },
+    );
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: IntrinsicWidth(
+        child: TextField(
+          controller: _titleController,
+          decoration: const InputDecoration(
+            hintText: 'Untitled Document',
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent, width: 3,),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue, width: 3,),
+            ),
+          ),
+          style: const TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w400,
+          ),
+          onChanged:
+            ref.read(DocumentController.notifier(widget.documentId)).setTitle
+        ),
+      ),
+    );
+  }
+}
+
+final _isSavedRemotelyProvider = Provider.family<bool, String>((ref, id) {
+  return ref.watch(DocumentController.provider(id)).isSavedRemotely;
+});
+
+class IsSavedIndicator extends ConsumerWidget {
+  const IsSavedIndicator({
+    Key? key,
+    required this.documentId,
+  }) : super(key: key);
+
+  final String documentId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isSaved = ref.watch(
+      _isSavedRemotelyProvider(documentId),
+    );
+
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      child: isSaved
+          ? const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Changes saved',
+                style: TextStyle(color: Colors.green),
+              ),
+            )
+          : const SizedBox.shrink(),
+    );
+  }
+}
+
 
 class _DocumentEditorWidget extends ConsumerStatefulWidget {
   const _DocumentEditorWidget({
@@ -67,7 +165,7 @@ class __DocumentEditorState extends ConsumerState<_DocumentEditorWidget> {
   @override
   Widget build(BuildContext context) {
     final quillController =
-    ref.watch(_quillControllerProvider(widget.documentId));
+        ref.watch(_quillControllerProvider(widget.documentId));
 
     if (quillController == null) {
       return const Center(child: CircularProgressIndicator());
@@ -150,7 +248,6 @@ class __DocumentEditorState extends ConsumerState<_DocumentEditorWidget> {
                     null,
                   ),
                 ),
-
               ),
             ),
           ),
@@ -159,14 +256,14 @@ class __DocumentEditorState extends ConsumerState<_DocumentEditorWidget> {
     );
   }
 
-  // Widget _defaultEmbedBuilderWeb(BuildContext context,
-  //     QuillController controller, Embed node, bool readOnly) {
-  //   throw UnimplementedError(
-  //     'Embeddable type "${node.value.type}" is not supported by default '
-  //         'embed builder of QuillEditor. You must pass your own builder function '
-  //         'to embedBuilder property of QuillEditor or QuillField widgets.',
-  //   );
-  // }
+// Widget _defaultEmbedBuilderWeb(BuildContext context,
+//     QuillController controller, Embed node, bool readOnly) {
+//   throw UnimplementedError(
+//     'Embeddable type "${node.value.type}" is not supported by default '
+//         'embed builder of QuillEditor. You must pass your own builder function '
+//         'to embedBuilder property of QuillEditor or QuillField widgets.',
+//   );
+// }
 }
 
 class _Toolbar extends ConsumerWidget {

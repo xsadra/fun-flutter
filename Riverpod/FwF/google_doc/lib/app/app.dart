@@ -33,6 +33,7 @@ class _GoogleDocAppState extends ConsumerState<GoogleDocApp> {
     }
 
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routeInformationParser: const RoutemasterParser(),
       routerDelegate: RoutemasterDelegate(
         routesBuilder: (context) {
