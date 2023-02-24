@@ -8,6 +8,7 @@ import '../../app/app.dart';
 import '../../app/navigation/routes.dart';
 import 'state/document_controller.dart';
 import 'widgets/menu_bar.dart';
+import 'widgets/widgets.dart';
 
 final _quillControllerProvider =
     Provider.family<QuillController?, String>((ref, id) {
@@ -34,6 +35,23 @@ class DocumentPage extends ConsumerWidget {
             trailing: [IsSavedIndicator(documentId: documentId)],
             newDocumentPressed: () {
               Routemaster.of(context).push(AppRoutes.newDocument);
+            },
+            openDocumentsPressed: () {
+              Future.delayed(const Duration(milliseconds: 0), () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return Dialog(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints.loose(
+                          const Size(1400, 700),
+                        ),
+                        child: const AllDocumentsPopup(),
+                      ),
+                    );
+                  },
+                );
+              });
             },
           ),
           _Toolbar(documentId: documentId),
@@ -89,23 +107,29 @@ class _TitleTextEditorState extends ConsumerState<TitleTextEditor> {
       padding: const EdgeInsets.all(8.0),
       child: IntrinsicWidth(
         child: TextField(
-          controller: _titleController,
-          decoration: const InputDecoration(
-            hintText: 'Untitled Document',
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent, width: 3,),
+            controller: _titleController,
+            decoration: const InputDecoration(
+              hintText: 'Untitled Document',
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: 3,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.blue,
+                  width: 3,
+                ),
+              ),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue, width: 3,),
+            style: const TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.w400,
             ),
-          ),
-          style: const TextStyle(
-            fontSize: 26,
-            fontWeight: FontWeight.w400,
-          ),
-          onChanged:
-            ref.read(DocumentController.notifier(widget.documentId)).setTitle
-        ),
+            onChanged: ref
+                .read(DocumentController.notifier(widget.documentId))
+                .setTitle),
       ),
     );
   }
@@ -143,7 +167,6 @@ class IsSavedIndicator extends ConsumerWidget {
     );
   }
 }
-
 
 class _DocumentEditorWidget extends ConsumerStatefulWidget {
   const _DocumentEditorWidget({

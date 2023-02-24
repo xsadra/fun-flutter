@@ -75,6 +75,28 @@ class DatabaseRepository with RepositoryExceptionMixin {
     return DocumentPageData.fromMap(doc.data);
   }
 
+  Future<List<DocumentPageData>> getAllPages({required String accountId}) {
+    logger.info('Getting all pages with account id: $accountId');
+    return exceptionHandler(_getAllPage(accountId));
+  }
+
+  Future<List<DocumentPageData>> _getAllPage(String accountId) async {
+    logger.info('Getting all pages with account id: $accountId');
+    final result = await _databases.listDocuments(
+      databaseId: AppDB.id,
+      collectionId: CollectionNames.pages,
+      queries: [
+        Query.equal('owner', accountId),
+      ],
+    );
+
+    final documents = result.documents
+        .map((e) => DocumentPageData.fromMap(e.data))
+        .toList();
+    logger.info('Found ${documents.length} documents, [${documents.map((e) => e.title).join(', ')}]');
+    return documents;
+  }
+
   Future<void> updatePage({
     required String documentId,
     required DocumentPageData data,
