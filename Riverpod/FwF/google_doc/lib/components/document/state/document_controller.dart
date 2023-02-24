@@ -1,12 +1,15 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/painting.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../app/providers.dart';
 import '../../../core/log/logger.dart';
 import '../../../models/app_error.dart';
+import '../../../models/models.dart';
 import '../../../repositories/repository_exception.dart';
 import 'document_state.dart';
 
@@ -23,11 +26,15 @@ class DocumentController extends StateNotifier<DocumentState> {
       : super(
           DocumentState(id: documentId),
         ) {
-     _setupDocument();
+    _setupDocument();
+    _setupListeners();
   }
 
   final Ref _ref;
   Timer? _debounce;
+  final _deviceId = const Uuid().v4();
+  late final StreamSubscription<dynamic>? realtimeListener;
+  late final StreamSubscription<dynamic>? documentListener;
 
   static StateNotifierProviderFamily<DocumentController, DocumentState, String>
       get provider => _documentProvider;
@@ -36,13 +43,11 @@ class DocumentController extends StateNotifier<DocumentState> {
           String documentId) =>
       provider(documentId).notifier;
 
-
-
   Future<void> _setupDocument() async {
     try {
       final docPageData = await _ref.read(Repository.database).getPage(
-        documentId: state.id,
-      );
+            documentId: state.id,
+          );
 
       late final Document quillDoc;
       if (docPageData.content.isEmpty) {
@@ -64,9 +69,58 @@ class DocumentController extends StateNotifier<DocumentState> {
       );
 
       state.controller?.addListener(_quillControllerUpdate);
+
+      documentListener = state.document?.changes.listen((event) {
+        logger.info('Document change: $event');
+        final delta = event.item2;
+        final source = event.item3;
+
+        if (source != ChangeSource.LOCAL) {
+          return;
+        }
+
+        _broadcastDeltaUpdate(delta);
+      });
     } on RepositoryException catch (e) {
       state = state.copyWith(error: AppError(message: e.message));
     }
+  }
+
+  Future<void> _setupListeners() async {
+    final subscription =
+        _ref.read(Repository.database).subscribeToPage(pageId: state.id);
+
+    realtimeListener = subscription.stream.listen(
+      (event) {
+        final deviceId = event.payload['deviceId'] as String;
+
+        if (deviceId != _deviceId) {
+          final delta =
+              Delta.fromJson(jsonDecode(event.payload['delta'] as String));
+
+          state.controller?.compose(
+            delta,
+            state.controller?.selection ??
+                const TextSelection.collapsed(offset: 0),
+            ChangeSource.REMOTE,
+          );
+        }
+      },
+    );
+  }
+
+  Future<void> _broadcastDeltaUpdate(
+    Delta delta,
+  ) async {
+    final jsonDelta = jsonEncode(delta.toJson());
+    _ref.read(Repository.database).updateDelta(
+          pageId: state.id,
+          data: DeltaData(
+            account: _ref.read(AppState.auth).account!.$id,
+            delta: jsonDelta,
+            deviceId: _deviceId,
+          ),
+        );
   }
 
   void _quillControllerUpdate() {
@@ -100,14 +154,14 @@ class DocumentController extends StateNotifier<DocumentState> {
       );
     }
     state = state.copyWith(
-      documentPageData: state.documentPageData!
-          .copyWith(content: state.document!.toDelta()),
+      documentPageData:
+          state.documentPageData!.copyWith(content: state.document!.toDelta()),
     );
     try {
       await _ref.read(Repository.database).updatePage(
-        documentId: state.id,
-        data: state.documentPageData!,
-      );
+            documentId: state.id,
+            data: state.documentPageData!,
+          );
       state = state.copyWith(isSavedRemotely: true);
     } on RepositoryException catch (e) {
       state = state.copyWith(
@@ -119,6 +173,8 @@ class DocumentController extends StateNotifier<DocumentState> {
 
   @override
   void dispose() {
+    realtimeListener?.cancel();
+    documentListener?.cancel();
     state.controller?.removeListener(_quillControllerUpdate);
     super.dispose();
   }

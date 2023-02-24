@@ -16,12 +16,12 @@ void initLogger() {
     } else if (record.level == Level.ALL) {
       emoji = '🔊';
     }
-    debugPrint('$emoji ${record.level.name}: ${record.loggerName}');
+    debugPrint('$emoji ${record.level.name}: ${record.message}');
     if (record.error != null) {
       debugPrint('Error: ${record.error}');
     }
 
-    if (record.level != Level.SEVERE) {
+    if (record.level == Level.SEVERE) {
       debugPrintStack(stackTrace: record.stackTrace);
     }
   });
