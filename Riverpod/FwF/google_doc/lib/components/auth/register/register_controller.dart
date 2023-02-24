@@ -19,8 +19,6 @@ class RegisterController extends StateNotifier<ControllerStateBase> {
 
   static AlwaysAliveRefreshable<RegisterController> get notifier =>
       provider.notifier;
-  // static AlwaysAliveProviderBase<RegisterController> get notifier =>
-  //     provider.notifier;
 
   final Ref _ref;
 

@@ -101,50 +101,42 @@ class _FileMenuButton extends StatelessWidget {
       offset: const Offset(0, 40),
       itemBuilder: (context) => [
         PopupMenuItem<int>(
+          onTap: newDocumentPressed,
+          enabled: newDocumentPressed != null,
           child: const PopUpMenuTile(
-            isActive: true,
             title: 'New Document',
           ),
-          onTap: () {
-            newDocumentPressed?.call();
-          },
         ),
         PopupMenuItem<int>(
+          onTap: openDocumentsPressed,
+          enabled: openDocumentsPressed != null,
           child: const PopUpMenuTile(
-            isActive: true,
             title: 'Open',
           ),
-          onTap: () {
-            openDocumentsPressed?.call();
-          },
         ),
         PopupMenuItem<int>(
+          onTap: signOutPressed,
+          enabled: signOutPressed != null,
           child: const PopUpMenuTile(
-            isActive: true,
             icon: Icons.logout_rounded,
             title: 'Sign out',
           ),
-          onTap: () {
-            signOutPressed?.call();
-          },
         ),
         PopupMenuItem<int>(
+          onTap: membersPressed,
+          enabled: membersPressed != null,
           child: const PopUpMenuTile(
             icon: Icons.group,
             title: 'Members',
           ),
-          onTap: () {
-            membersPressed?.call();
-          },
         ),
         PopupMenuItem<int>(
+          onTap: inviteMembersPressed,
+          enabled: inviteMembersPressed != null,
           child: const PopUpMenuTile(
             icon: Icons.person_add,
             title: 'Invite members',
           ),
-          onTap: () {
-            inviteMembersPressed?.call();
-          },
         ),
       ],
       child: const Padding(
@@ -181,55 +173,50 @@ class _EditMenuButton extends StatelessWidget {
       itemBuilder: (context) => [
         PopupMenuItem<int>(
           value: 0,
+          onTap: undoPressed,
+          enabled: undoPressed != null,
           child: const PopUpMenuTile(
             isActive: true,
             icon: Icons.undo,
             title: 'Undo',
           ),
-          onTap: () {
-            undoPressed?.call();
-          },
         ),
         PopupMenuItem<int>(
           value: 1,
+          onTap: redoPressed,
+          enabled: redoPressed != null,
           child: const PopUpMenuTile(
             isActive: true,
             icon: Icons.redo,
             title: 'Redo',
           ),
-          onTap: () {
-            redoPressed?.call();
-          },
         ),
         PopupMenuItem<int>(
           value: 2,
+          onTap: cutPressed,
+          enabled: cutPressed != null,
           child: const PopUpMenuTile(
             icon: Icons.cut,
             title: 'Cut',
           ),
-          onTap: () {
-            cutPressed?.call();
-          },
         ),
         PopupMenuItem<int>(
           value: 3,
+          onTap: copyPressed,
+          enabled: copyPressed != null,
           child: const PopUpMenuTile(
             icon: Icons.copy,
             title: 'Copy',
           ),
-          onTap: () {
-            copyPressed?.call();
-          },
         ),
         PopupMenuItem<int>(
           value: 3,
+          onTap: pastePressed,
+          enabled: pastePressed != null,
           child: const PopUpMenuTile(
             icon: Icons.paste,
             title: 'Paste',
           ),
-          onTap: () {
-            pastePressed?.call();
-          },
         ),
       ],
       child: const Padding(

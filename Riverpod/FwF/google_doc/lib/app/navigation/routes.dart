@@ -2,6 +2,7 @@ import 'package:routemaster/routemaster.dart' hide TransitionPage;
 
 import '../../components/auth/auth.dart';
 import '../../components/document/document.dart';
+import '../../core/log/logger.dart';
 import 'transition_page.dart';
 
 const _login = '/login';
@@ -30,9 +31,13 @@ final routesLoggedOut = RouteMap(
 final routesLoggedIn = RouteMap(
   onUnknownRoute: (_) => const Redirect(_newDocument),
   routes: {
-    _newDocument: (_) => const TransitionPage(child: NewDocumentPage()),
+    _newDocument: (_) {
+      logger.info('Go to new Document');
+      return const TransitionPage(child: NewDocumentPage());
+    },
     '$_document/:id': (info) {
       final id = info.pathParameters['id'];
+      logger.info('$_document/${id ?? 'null'}');
       if (id == null) {
         return const Redirect(_newDocument);
       }

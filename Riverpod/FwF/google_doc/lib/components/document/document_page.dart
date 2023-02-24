@@ -6,8 +6,8 @@ import 'package:tuple/tuple.dart';
 
 import '../../app/app.dart';
 import '../../app/navigation/routes.dart';
+import '../../app/providers.dart';
 import 'state/document_controller.dart';
-import 'widgets/menu_bar.dart';
 import 'widgets/widgets.dart';
 
 final _quillControllerProvider =
@@ -35,6 +35,9 @@ class DocumentPage extends ConsumerWidget {
             trailing: [IsSavedIndicator(documentId: documentId)],
             newDocumentPressed: () {
               Routemaster.of(context).push(AppRoutes.newDocument);
+            },
+            signOutPressed: () {
+              ref.read(AppState.auth.notifier).signOut();
             },
             openDocumentsPressed: () {
               Future.delayed(const Duration(milliseconds: 0), () {
