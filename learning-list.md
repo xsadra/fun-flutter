@@ -37,7 +37,7 @@
 
 - **Web**
   - [Rich Text Editing Experience with Flutter Web and Appwrite](https://youtu.be/0_GJ1w_iG44)
-  - [Collaborative Rich Text Editing Experience with Flutter Web and Appwrite](https://youtu.be/0_GJ1w_iG44) - (Current Tutorial 📌)
+  - [Collaborative Rich Text Editing Experience with Flutter Web and Appwrite](https://youtu.be/0_GJ1w_iG44) - ✅
 
 
 ## List of useful Videos:
