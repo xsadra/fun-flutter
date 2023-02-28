@@ -1,16 +1,10 @@
-# google_doc
+# G-Doc
 
 Collaborative Rich Text Editing Experience with Flutter Web and Appwrite
 
-## Getting Started
+## What is this for?
+This project is a Flutter web application which Using Appwrite as Database and Auth service to Provide a clone of Google Doc.
 
-This project is a starting point for a Flutter application.
+G-Doc Project followed [this youtube tutorial](https://www.youtube.com/watch?v=0_GJ1w_iG44) steps.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The main purpose of this project is to work with AppWrite to test how to connect with the database. and whether it can be used for current projects or not.
