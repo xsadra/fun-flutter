@@ -12,7 +12,7 @@
   - [Example 6](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/example6)
   - [PicoGram](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/Vandad/Riverpod2.x/picogram) <!-- - [💻 Current task] -->
      - [Download the PicoGram App 📱](https://github.com/Arti-Sadra/fun-flutter/releases/tag/v1.0.0-alpha)
-
+  - [Collaborative Rich Text Editing Experience with Flutter Web and Appwrite](https://github.com/Arti-Sadra/fun-flutter/tree/main/Riverpod/FwF/google_doc)
 <br><br>
 ## List of Code Snippets:
 - Dart
